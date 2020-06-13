@@ -16,16 +16,16 @@ import os
 # html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # General substitutions.
-project = 'Inary'
-copyright = "2016-2020 Zaryob"
+project = 'Iksemel'
+copyright = "2001-2003 G@"urer @"Ozen"
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
 #
 # The short X.Y version.
-version = '1.3'
+version = '1.6'
 # The full version, including alpha/beta/rc tags.
-release = '1.3_rc'
+release = '1.6_gamma'
 
 
 # General configuration

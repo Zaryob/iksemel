@@ -24,5 +24,8 @@ MA 02111-1307, USA.
    
    Development
    
+   Datatype_Index
+   
+   Function_Index
 @end ifinfo
 
