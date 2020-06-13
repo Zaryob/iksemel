@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Top, , , (dir) &mdash; Iksemel Documentation</title>
+  <title>Introduction &mdash; Iksemel Documentation</title>
   
 
   
@@ -38,8 +38,7 @@
           title="Search within Iksemel Documentation"
           href="_static/opensearch.xml"/>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Introduction" href="Introduction.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +52,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> Inary
+            <a href="#" class="icon icon-home" alt="Documentation Home"> Iksemel
           
 
           
@@ -63,7 +62,7 @@
             
             
               <div class="version">
-                1.3
+                1.6
               </div>
             
           
@@ -88,12 +87,49 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">2. Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Development.html">3. Development</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#compiling-the-library">Compiling the Library</a></li>
+<li><a class="reference internal" href="#using-iksemel-in-applications">Using iksemel in Applications</a></li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#tutorials">Tutorials</a><ul>
+<li><a class="reference internal" href="#parsing-an-xml-document">Parsing an XML Document</a></li>
+<li><a class="reference internal" href="#working-with-xml-trees">Working with XML Trees</a><ul>
+<li><a class="reference internal" href="#memory-management">Memory Management</a></li>
+<li><a class="reference internal" href="#creating-a-tree">Creating a Tree</a></li>
+<li><a class="reference internal" href="#accessing-a-tree">Accessing a Tree</a></li>
+<li><a class="reference internal" href="#converting-a-tree-to-an-xml-document">Converting a Tree to an XML Document</a></li>
+<li><a class="reference internal" href="#parsing-a-document-into-a-tree">Parsing a Document into a Tree</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xml-streams">XML Streams</a></li>
+<li><a class="reference internal" href="#writing-a-jabber-client">Writing a Jabber Client</a><ul>
+<li><a class="reference internal" href="#security">Security</a></li>
+<li><a class="reference internal" href="#packets">Packets</a></li>
+<li><a class="reference internal" href="#packet-filter">Packet Filter</a></li>
+<li><a class="reference internal" href="#creating-common-packets">Creating Common Packets</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utility-functions">Utility Functions</a><ul>
+<li><a class="reference internal" href="#memory-utilities">Memory Utilities</a></li>
+<li><a class="reference internal" href="#string-utilities">String Utilities</a></li>
+<li><a class="reference internal" href="#sha1-hash">SHA1 Hash</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development">Development</a><ul>
+<li><a class="reference internal" href="#roadmap">Roadmap</a></li>
+<li><a class="reference internal" href="#coding-style">Coding Style</a></li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datatype-index">Datatype Index</a></li>
+<li><a class="reference internal" href="#function-index">Function Index</a></li>
+</ul>
+</div>
             
           
         </div>
@@ -107,7 +143,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Inary</a>
+          <a href="#">Iksemel</a>
         
       </nav>
 
@@ -138,7 +174,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Top, , , (dir)</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -155,64 +191,2418 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="top-dir">
-<h1>Top, , , (dir)<a class="headerlink" href="#top-dir" title="Permalink to this headline">¶</a></h1>
-<p>&#64;top iksemel Programmers Manual</p>
-<p>Copyright C 2001-2003 G&#64;”urer &#64;”Ozen</p>
-<p>This is a free document; you can redistribute it and/or
-modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation; either version 2, or
-(at your option) any later version.You may obtain a copy of the
-GNU General Public License from the Free Software Foundation
-by visiting their Web site or by writing to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-MA 02111-1307, USA.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Introduction.html#compiling-the-library">1.1. Compiling the Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Introduction.html#using-iksemel-in-applications">1.2. Using iksemel in Applications</a></li>
+  <p>Copyright © 2001-2003 Gürer Özen</p>
+<p>This is a free document; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2, or (at your option) any later
+version.You may obtain a copy of the GNU General Public License from the
+Free Software Foundation by visiting their Web site or by writing to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.</p>
+<div class="section" id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>iksemel is an XML (eXtensible Markup Language) parser library designed
+for Jabber applications. It is coded in ANSI C for POSIX compatible
+environments, thus highly portable. It is free software released under
+the GNU Lesser General Public License.</p>
+<p>The purprose of this manual is to tell you how to use the facilities of
+the iksemel library. Manual is written with the assumption that you are
+familiar with the C programming language, basic programming concepts,
+XML and Jabber protocol.</p>
+<div class="section" id="compiling-the-library">
+<h2>Compiling the Library<a class="headerlink" href="#compiling-the-library" title="Permalink to this headline">¶</a></h2>
+<p>You need to install MinGW (<a class="reference external" href="http://mingw.org">http://mingw.org</a>) under Windows to be able to
+compile iksemel. Although not tested by the author, Cygwin should work
+equally well.</p>
+<p>Library can be built with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">./configure</span>
+<span class="l l-Scalar l-Scalar-Plain">make</span>
+</pre></div>
+</div>
+<p>If you want to make a self test:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">make test</span>
+</pre></div>
+</div>
+<p>Now you can install it with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">make install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-iksemel-in-applications">
+<h2>Using iksemel in Applications<a class="headerlink" href="#using-iksemel-in-applications" title="Permalink to this headline">¶</a></h2>
+<p>You need to include <code class="docutils literal notranslate"><span class="pre">iksemel.h</span></code> file in your source to access library
+API. You can do this with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;iksemel.h&quot;</span></code></p>
+<p>Now you can use iksemel functions and compile your source. In able to
+link your compiled object files and generate your executable program,
+you have to link with iksemel library. This can be done with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">gcc -o myprg src1.o src2.o src3.o -liksemel</span>
+</pre></div>
+</div>
+<p>iksemel registers itself with pkg-config while installing, so if you are
+using autotools in your program, you can simply check the availability
+of iksemel and configure your build process accordingly with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">PKG_CHECK_MODULES(IKSEMEL,iksemel,,exit)</span>
+</pre></div>
+</div>
+<p>This would result in IKSEMEL_LIBS and IKSEMEL_CFLAGS substitution
+variables set to correct values.</p>
+</div>
+</div>
+<div class="section" id="tutorials">
+<span id="id2"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="parsing-an-xml-document">
+<span id="id3"></span><h2>Parsing an XML Document<a class="headerlink" href="#parsing-an-xml-document" title="Permalink to this headline">¶</a></h2>
+<p>iksemel parser sequentally processes the XML document. Each encountered
+XML element (i.e. tags, character data, comments, processing
+instructions, etc.) is reported to your application by calling the hook
+functions you have provided. This type of interface is called SAX
+(serial access) interface.</p>
+<p>iksparser
+Parser stores its state in a small structure. This structure is
+referenced by <code class="docutils literal notranslate"><span class="pre">iksparser</span></code> type, and managed with following functions:</p>
+<p>iks_sax_new
+Function
+:
+iksparser*
+iks_sax_new
+(
+void*
+user_data
+,
+iksTagHook*
+tagHook
+,
+iksCDataHook*
+cdataHook
+)
+;</p>
+<blockquote>
+<div><p>This function allocates and initializes a parser structure. If
+allocation fails, NULL value is returned. user_data is passed
+directly to hook functions.</p>
+</div></blockquote>
+<p>iksTagHook
+Typedef
+:
+iksTagHook</p>
+<blockquote>
+<div><p>int iksTagHook (void* user_data, char* name, char** atts, int
+type);</p>
+<p>This function is called when a tag parsed. name is the name of the
+tag. If tag has no attributes atts is NULL, otherwise it contains a
+null terminated list of pointers to tag’s attributes and their
+values. If return value isn’t <code class="docutils literal notranslate"><span class="pre">IKS_OK</span></code>, it is passed immediately to
+the caller of the <code class="docutils literal notranslate"><span class="pre">iks_parse</span></code>.</p>
+<p>type is one of the following:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_OPEN</span></code></dt><dd><p>Opening tag, i.e. &lt;tag attr=’value’&gt;</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_CLOSE</span></code></dt><dd><p>Closing tag, i.e. &lt;/tag&gt;</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SINGLE</span></code></dt><dd><p>Standalone tag, i.e. &lt;tag attr=’value’/&gt;</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>iksCDataHook
+Typedef
+:
+iksCDataHook</p>
+<blockquote>
+<div><p>int iksCDataHook (void* user_data, char* data, size_t len);</p>
+<p>data is a pointer to the character data. Encoding is UTF-8 and it
+isn’t terminated with a null character. Size of the data is given
+with len in bytes. This function can be called several times with
+smaller sized data for a single string. If return value isn’t
+<code class="docutils literal notranslate"><span class="pre">IKS_OK</span></code>, it is passed immediately to the caller of the
+<code class="docutils literal notranslate"><span class="pre">iks_parse</span></code>.</p>
+</div></blockquote>
+<p>iks_parse
+Function
+:
+int
+iks_parse
+(
+iksparser*
+prs
+,
+char
+*
+data
+,
+size_t
+len
+,
+int
+finish
+)
+;</p>
+<blockquote>
+<div><p>You give XML document to the parser with this function. data is a len
+bytes string. If len is zero, data must be a null terminated string.</p>
+<p>If finish value is zero, parser waits for more data later. If you
+want to finish parsing without giving data, call it like:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks_parse (my_parser, NULL, 0, 1);</span>
+</pre></div>
+</div>
+<p>You should check the return value for following conditions:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_OK</span></code></dt><dd><p>There isn’t any problem.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NOMEM</span></code></dt><dd><p>Not enough memory.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_BADXML</span></code></dt><dd><p>Document is not well-formed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_HOOK</span></code></dt><dd><p>Your hook decided that there is an error.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>iks_parser_delete
+Function
+:
+void
+iks_parser_delete
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>This function frees parser structure and associated data.</p>
+</div></blockquote>
+<p>Now we have learned how to create and use a sax parser. Lets parse a
+simple XML document. Write following code into a <code class="docutils literal notranslate"><span class="pre">test.c</span></code> file.</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;iksemel.h&gt;
+
+int pr_tag (void *udata, char *name, char **atts, int type)
+{
+    switch (type) {
+        case IKS_OPEN:
+            printf (&quot;TAG &lt;%s&gt;\n&quot;, name);
+            break;
+        case IKS_CLOSE:
+            printf (&quot;TAG &lt;/%s&gt;\n&quot;, name);
+            break;
+        case IKS_SINGLE:
+            printf (&quot;TAG &lt;%s/&gt;\n&quot;, name);
+            break;
+    }
+    if (atts) {
+        int i = 0;
+        while (atts[i]) {
+            printf (&quot;  ATTRIB %s=&#39;%s&#39;\n&quot;, atts[i], atts[i+1]);
+            i += 2;
+        }
+    }
+    return IKS_OK;
+}
+
+enum ikserror pr_cdata (void *udata, char *data, size_t len)
+{
+    int i;
+    printf (&quot;CDATA [&quot;);
+    for (i = 0; i &lt; len; i++)
+        putchar (data[i]);
+    printf (&quot;]\n&quot;);
+    return IKS_OK;
+}
+
+int main (int argc, char *argv[])
+{
+    iksparser *p;
+    p = iks_sax_new (NULL, pr_tag, pr_cdata);
+    switch (iks_parse (p, argv[1], 0, 1)) {
+        case IKS_OK:
+            puts (&quot;OK&quot;);
+            break;
+        case IKS_NOMEM:
+            puts (&quot;Not enough memory&quot;);
+            exit (1);
+        case IKS_BADXML:
+            puts (&quot;XML document is not well-formed&quot;);
+            exit (2);
+        case IKS_HOOK:
+            puts (&quot;Our hooks didn&#39;t like something&quot;);
+            exit (2);
+    }
+    iks_parser_delete (p);
+    return 0;
+}
+</pre></div>
+</div>
+<p>Now compile and test it with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">gcc -o test test.c -liksemel</span>
+<span class="l l-Scalar l-Scalar-Plain">./test &quot;&lt;test&gt;Hello&lt;br/&gt;World!&lt;/test&gt;&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">./test &quot;&lt;lala a=&#39;12&#39; b=&#39;42&#39;/&gt;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Error Handling</strong></p>
+<p>XML standart states that once an error is detected, the processor must
+not continue normal processing (i.e. it must not pass character data or
+markup information to the application). So iksemel stops processing
+immediately when it encounters a syntax error, or one of your hook
+functions return any one value than <code class="docutils literal notranslate"><span class="pre">IKS_OK</span></code>, and <code class="docutils literal notranslate"><span class="pre">iks_parse</span></code>
+function returns with the error code.</p>
+<p>Since it is useful for debugging, iksemel provides functions to get
+position of the error. Position is usually at the starting character for
+syntax errors. Since your hooks are called after whole element (i.e.
+markup or character data) is passed, position is at the end of the
+erroneous element for <code class="docutils literal notranslate"><span class="pre">IKS_HOOK</span></code> errors.</p>
+<p>iks_nr_bytes
+Function
+:
+unsigned long
+iks_nr_bytes
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Returns how many number of bytes parsed.</p>
+</div></blockquote>
+<p>iks_nr_lines
+Function
+:
+unsigned long
+iks_nr_lines
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Returns how many number of lines parsed.</p>
+</div></blockquote>
+<p>If you want to parse another document with your parser again, you should
+use the following function to reset your parser.</p>
+<p>iks_parser_reset
+Function
+:
+void
+iks_parser_reset
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Resets the parser’s internal state.</p>
+</div></blockquote>
+</div>
+<div class="section" id="working-with-xml-trees">
+<span id="id4"></span><h2>Working with XML Trees<a class="headerlink" href="#working-with-xml-trees" title="Permalink to this headline">¶</a></h2>
+<p>SAX interface uses very little memory, but it forces you to access XML
+documents sequentally. In many cases you want to keep a tree like
+representation of XML document in memory and want to access and modify
+its content randomly.</p>
+<p>iksemel provides functions for efficiently creating such trees either
+from documents or programmaticaly. You can access and modify this tree
+and can easily generate a new XML document from the tree.</p>
+<p>This is called DOM (Document Object Model) interface.</p>
+<div class="section" id="memory-management">
+<span id="id5"></span><h3>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
+<p>Since keeping whole document content uses a lot of memory and requires
+many calls to OS’s memory allocation layer, iksemel uses a simple object
+stack system for minimizing calls to the <code class="docutils literal notranslate"><span class="pre">malloc</span></code> function and
+releasing all the memory associated with a tree in a single step.</p>
+<p>A parsed XML tree contains following objects:</p>
+<dl class="simple">
+<dt>‘<code class="docutils literal notranslate"><span class="pre">Nodes</span></code>‘</dt><dd><p>These are basic blocks of document. They can contain a tag, attribute
+pair of a tag, or character data. Tag nodes can also contain other
+nodes as children. Node structure has a small fixed size depending on
+the node type.</p>
+</dd>
+<dt>‘<code class="docutils literal notranslate"><span class="pre">Names</span></code>‘</dt><dd><p>Names of tags and attributes. They are utf-8 encoded small strings.</p>
+</dd>
+<dt>‘<code class="docutils literal notranslate"><span class="pre">Character</span> <span class="pre">Data</span></code>‘</dt><dd><p>They are similar to names but usually much bigger.</p>
+</dd>
+</dl>
+<p>iksemel’s object stack has two separate areas for keeping these data
+objects. Meta chunk contains all the structures and aligned data, while
+the data chunk contains strings. Each chunk starts with a choosen size
+memory block, then when necessary more blocks allocated for providing
+space. Unless there is a big request, each block is double the size of
+the previous block, thus real memory needs are quickly reached without
+allocating too many blocks, or wasting memory with too big blocks.</p>
+<p>ikstack
+Typedef
+:
+ikstack</p>
+<blockquote>
+<div><p>This is a structure defining the object stack. Its fields are private
+and subject to change with new iksemel releases.</p>
+</div></blockquote>
+<p>iks_stack_new
+Function
+:
+ikstack *
+iks_stack_new
+(
+size_t
+meta_chunk
+,
+size_t
+data_chunk
+)
+;</p>
+<blockquote>
+<div><p>Creates an object stack. meta_chunk is the initial size of the data
+block used for structures and aligned data. data_chunk is the initial
+size of the data block used for strings. They are both in byte units.</p>
+<p>These two initial chunks and a small object stack structure is
+allocated in one <code class="docutils literal notranslate"><span class="pre">malloc</span></code> call for optimization purproses.</p>
+</div></blockquote>
+<p>iks_stack_alloc
+Function
+:
+void *
+iks_stack_alloc
+(
+ikstack
+*
+stack
+,
+size_t
+size
+)
+;</p>
+<blockquote>
+<div><p>Allocates size bytes of space from the object stack’s meta chunk.
+Allocated space is aligned on platform’s default alignment boundary
+and isn’t initialized. Returns a pointer to the space, or NULL if
+there isn’t enough space available and allocating a new block fails.</p>
+</div></blockquote>
+<p>iks_stack_strdup
+Function
+:
+void *
+iks_stack_strdup
+(
+ikstack
+*
+stack
+,
+const
+char
+*
+src
+,
+size_t
+len
+)
+;</p>
+<blockquote>
+<div><p>Copies given string src into the object stack’s data chunk. Returns a
+pointer to the new string, or NULL if there isn’t enough space in the
+stack. If len is zero string must be null terminated.</p>
+</div></blockquote>
+<p>iks_stack_delete
+Function
+:
+void
+iks_stack_delete
+(
+ikstack
+*
+stack
+)
+;</p>
+<blockquote>
+<div><p>Gives all memory associated with object stack to the system.</p>
+</div></blockquote>
+<p>Since character data sections are usually parsed in separate blocks, a
+growable string implementation is necessary for saving memory.</p>
+<p>iks_stack_strcat
+Function
+:
+char *
+iks_stack_strcat
+(
+ikstack
+*
+stack
+,
+char
+*
+old
+,
+size_t
+old_len
+,
+const
+char
+*
+src
+,
+size_t
+src_len
+)
+;</p>
+<blockquote>
+<div><p>This function appends the string src to the string old in the stack’s
+data chunk. If old is NULL it behaves like <code class="docutils literal notranslate"><span class="pre">iks_stack_strdup</span></code>.
+Otherwise old has to be a string created with <code class="docutils literal notranslate"><span class="pre">iks_stack_strdup</span></code> or
+<code class="docutils literal notranslate"><span class="pre">iks_stack_strcat</span></code> functions.</p>
+<p>If old_len or src_len is zero, corresponding string must be null
+terminated.</p>
+<p>Since string can be moved into another block of the data chunk, you
+must use the returned value for new string, and must not reference to
+old anymore. Return value can be NULL if there isn’t enough space in
+stack, and allocating a new block fails.</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-a-tree">
+<span id="id6"></span><h3>Creating a Tree<a class="headerlink" href="#creating-a-tree" title="Permalink to this headline">¶</a></h3>
+<p>iks
+Typedef
+:
+iks</p>
+<blockquote>
+<div><p>This is a structure defining a XML node. Its fields are private and
+only accessed by following functions.</p>
+</div></blockquote>
+<p>iks_new
+Function
+:
+iks*
+iks_new
+(
+const
+char
+*
+name
+)
+;</p>
+<blockquote>
+<div><p>Creates an object stack and creates a IKS_TAG type of node with given
+tag name inside the stack. Tag name is also copied into the stack.
+Returns the node pointer, or NULL if there isn’t enough memory.</p>
+</div></blockquote>
+<p>iks_new_within
+Function
+:
+iks*
+iks_new_within
+(
+const
+char
+*
+name
+,
+ikstack*
+stack
+)
+;</p>
+<blockquote>
+<div><p>Creates a IKS_TAG type of node with the given tag name. Node and tag
+name is allocated inside the given object stack. Returns the node
+pointer, or NULL if there isn’t enough memory.</p>
+</div></blockquote>
+<p>iks_insert
+Function
+:
+iks*
+iks_insert
+(
+iks
+*
+x
+,
+const
+char
+*
+name
+)
+;</p>
+<blockquote>
+<div><p>Creates a IKS_TAG type of node with the given tag name. Node and tag
+name is allocated inside the x node’s object stack and linked to x as
+a child node. Returns the node pointer, or NULL if there isn’t enough
+memory.</p>
+</div></blockquote>
+<p>iks_insert_cdata
+Function
+:
+iks*
+iks_insert_cdata
+(
+iks*
+x
+,
+const
+char*
+data
+,
+size_t
+len
+)
+;</p>
+<blockquote>
+<div><p>Creates a IKS_CDATA type of node with given character data. Node is
+allocated inside the x node’s object stack and linked to x as a child
+node. Data is copied as well. If len is zero data must be a null
+terminated string. Returns the node pointer, or NULL if there isn’t
+enough memory.</p>
+</div></blockquote>
+<p>iks_insert_attrib
+Function
+:
+iks*
+iks_insert_attrib
+(
+iks*
+x
+,
+const
+char*
+name
+,
+const
+char*
+value
+)
+;</p>
+<blockquote>
+<div><p>Creates a IKS_ATTRIBUTE type of node with given attribute name and
+the value. Node is allocated inside the x node’s object stack and
+linked to x as an attribute node. Attribute name and value is copied
+as well. Returns the node pointer, or NULL if there isn’t enough
+memory.</p>
+<p>Reinserting another value with same attribute name changes an
+attribute’s value. If value is NULL, attribute is removed from the
+tag.</p>
+</div></blockquote>
+<p>iks_insert_node
+Function
+:
+iks*
+iks_insert_node
+(
+iks*
+x
+,
+iks*
+y
+)
+;</p>
+<blockquote>
+<div><p>Links node y to node x as a child node. Nodes are not copied between
+object stacks, be careful.</p>
+</div></blockquote>
+<p>iks_hide
+Function
+:
+void
+iks_hide
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Changes the links of the other nodes so that x becomes invisible. It
+stays in the same object stack with neighbour nodes, be careful.</p>
+</div></blockquote>
+<p>iks_delete
+Function
+:
+void
+iks_delete
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Frees the object stack of the node x.</p>
+</div></blockquote>
+<p>Now lets create a tree representation of following XML document:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">&lt;message type=&#39;chat&#39; from=&#39;bob@bd.com&#39;&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;subject&gt;song lyric&lt;/subject&gt;&lt;priority&gt;high&lt;/priority&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;em style=&#39;underline&#39;&gt;here is the correct version:&lt;/em&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">i just don&#39;t see why i should even care</span>
+<span class="l l-Scalar l-Scalar-Plain">it&#39;s not dark yet, but it&#39;s getting there</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/message&gt;</span>
+</pre></div>
+</div>
+<p>here is the code:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x, *y, *z;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">x = iks_new (&quot;message&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (x, &quot;type&quot;, &quot;chat&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (x, &quot;from&quot;, &quot;bob@bd.com&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;subject&quot;), &quot;song lyric&quot;, 10);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;priority&quot;), &quot;high&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">y = iks_insert (x, &quot;body&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">z = iks_insert (y, &quot;em&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (z, &quot;style&quot;, &quot;underline&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (z, &quot;here is the correct version&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;i just don&#39;t see why&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;i should even care\n&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;it&#39;s not dark yet,&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;but it&#39;s getting there\n&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\n&quot;, 1);</span>
+</pre></div>
+</div>
+<p>Notice how newlines are inserted for proper formatting of document. They
+aren’t necessary for representing data, but they make it easier to read
+document for humans.</p>
+<p>Also notice how <code class="docutils literal notranslate"><span class="pre">iks_insert</span></code> and <code class="docutils literal notranslate"><span class="pre">iks_insert_cdata</span></code> chained.</p>
+<p>There are also functions for duplicating xml trees. They are:</p>
+<p>iks_copy
+Function
+:
+iks *
+iks_copy
+(
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Creates a full copy of the tree in a newly created object stack.</p>
+</div></blockquote>
+<p>iks_copy_within
+Function
+:
+iks *
+iks_copy_within
+(
+iks*
+x
+,
+ikstack
+*
+s
+)
+;</p>
+<blockquote>
+<div><p>Creates a full copy of the tree in given object stack.</p>
+</div></blockquote>
+</div>
+<div class="section" id="accessing-a-tree">
+<span id="accessing-the-tree"></span><h3>Accessing a Tree<a class="headerlink" href="#accessing-a-tree" title="Permalink to this headline">¶</a></h3>
+<p>Basic access functions allow you to move on the tree:</p>
+<p>iks_next
+Function
+:
+iks*
+iks_next
+(
+iks*
+x
+)
+;
+iks_prev
+Function
+:
+iks*
+iks_prev
+(
+iks*
+x
+)
+;
+iks_parent
+Function
+:
+iks*
+iks_parent
+(
+iks*
+x
+)
+;
+iks_child
+Function
+:
+iks*
+iks_child
+(
+iks*
+x
+)
+;
+iks_attrib
+Function
+:
+iks*
+iks_attrib
+(
+iks*
+x
+)
+;
+These functions return a pointer to the next, previous, parent, first
+child, and first attribute node of the given node x. If that node
+doesn’t exist or x is NULL, a NULL value is returned.</p>
+<p>iks_root
+Function
+:
+iks *
+iks_root
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns the topmost parent node of the x.</p>
+</div></blockquote>
+<p>iks_next_tag
+Function
+:
+iks*
+iks_next_tag
+(
+iks*
+x
+)
+;
+iks_prev_tag
+Function
+:
+iks*
+iks_prev_tag
+(
+iks*
+x
+)
+;
+iks_first_tag
+Function
+:
+iks*
+iks_first_tag
+(
+iks*
+x
+)
+;
+These functions return a pointer to the next, previous, first child node
+of the given node x. Only tag nodes are considered, other type of the
+nodes are skipped. If such a node doesn’t exist or x is NULL, a NULL
+value is returned.</p>
+<p>Another group of functions allow you to access specific information and
+content of the nodes:</p>
+<p>iks_stack
+Function
+:
+ikstack*
+iks_stack
+(
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns the object stack which node x stays.</p>
+</div></blockquote>
+<p>iks_type
+Function
+:
+enum ikstype
+iks_type
+(
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns the type of the node.</p>
+<p>ikstype</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TAG</span></code></dt><dd><p>Node is a tag and can contain child nodes and attributes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_CDATA</span></code></dt><dd><p>Node contains character data.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_ATTRIBUTE</span></code></dt><dd><p>Node contains an attribute and its value.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>iks_name
+Function
+:
+char*
+iks_name
+(
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns the name of the tag for nodes with the type IKS_TAG. Returns
+an attribute’s name for nodes of type IKS_ATTRIBUTE.</p>
+</div></blockquote>
+<p>iks_cdata
+Function
+:
+char*
+iks_cdata
+(
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns a pointer to node’s character data if available, NULL
+otherwise. Returns an attribute’s value for nodes of type
+IKS_ATTRIBUTE.</p>
+</div></blockquote>
+<p>iks_cdata_size
+Function
+:
+size_t
+iks_cdata_size
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns the size of the node’s character data in bytes.</p>
+</div></blockquote>
+<p>iks_has_children
+Function
+:
+int
+iks_has_children
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns a non-zero value if node x has a child node.</p>
+</div></blockquote>
+<p>iks_has_attribs
+Function
+:
+int
+iks_has_attribs
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Returns a non-zero value if node x has attributes.</p>
+</div></blockquote>
+<p>Last group of the functions simplifies finding and accessing the content
+of a specific node:</p>
+<p>iks_find
+Function
+:
+iks*
+iks_find
+(
+iks
+*
+x
+,
+const
+char
+*
+name
+)
+;</p>
+<blockquote>
+<div><p>Searches a IKS_TAG type of node with name as tag name in child nodes
+of x. Returns a pointer to the node if found, NULL otherwise.</p>
+</div></blockquote>
+<p>iks_find_cdata
+Function
+:
+char*
+iks_find_cdata
+(
+iks*
+x
+,
+const
+char*
+name
+)
+;</p>
+<blockquote>
+<div><p>Searches a IKS_TAG type of node with name as tag name in child nodes
+of x. Returns a pointer to the character data of the node’s first
+child node if found, NULL otherwise.</p>
+</div></blockquote>
+<p>iks_find_attrib
+Function
+:
+char*
+iks_find_attrib
+(
+iks*
+x
+,
+const
+char*
+name
+)
+;</p>
+<blockquote>
+<div><p>Searches an attribute with given name in attributes of the x. Returns
+a pointer to attribute value if found, NULL otherwise.</p>
+</div></blockquote>
+<p>iks_find_with_attrib
+Function
+:
+iks *
+iks_find_with_attrib
+(
+iks
+*
+x
+,
+const
+char
+*
+tagname
+,
+const
+char
+*
+attrname
+,
+const
+char
+*
+value
+)
+;</p>
+<blockquote>
+<div><p>Searches for a child tag of x which has an attribute with name
+attrname and value value. If tagname isn’t NULL, name of the tag must
+also match. Returns a pointer to the node if found, NULL otherwise.</p>
+</div></blockquote>
+<p>Here is an example which demonstrates accessing file names in a
+fictitious XML playlist file:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">&lt;playlist&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;mpg&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/download/matrix_rev_trailer.mpg&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;1:17&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;rm&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/anim/clementine_ep1.rm&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;22:00&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;avi&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/anim/futurama/ep101.avi&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;subtitle&gt;/home/madcat/subs/futurama/ep101.txt&lt;/subtitle&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;30:00&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;repeat/&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;fullscreen/&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;noui/&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/playlist&gt;</span>
+</pre></div>
+</div>
+<p>and here is the code:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;iksemel.h&gt;
+
+int main (int argc, char *argv[])
+{
+    iks *x, *y;
+    int e;
+
+    if (argc &lt; 2) {
+        printf (&quot;usage: %s &lt;playlistfile&gt;&quot;, argv[0]);
+        return 0;
+    }
+    e = iks_load (argv[1], &amp;x);
+    if (e != IKS_OK) {
+        printf (&quot;parse error %d\n&quot;, e);
+        return 1;
+    }
+    if (iks_find (x, &quot;repeat&quot;)) puts (&quot;repeat mode enabled&quot;);
+    y = iks_child (x);
+    while (y) {
+        if (iks_type (y) == IKS_TAG
+            &amp;&amp; strcmp (iks_name (y), &quot;item&quot;) == 0) {
+            printf (&quot;Filename: [%s]\n&quot;, iks_find_cdata (y, &quot;name&quot;));
+        }
+        y = iks_next (y);
+     }
+    iks_delete (x);
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-a-tree-to-an-xml-document">
+<span id="converting-a-tree-into-an-xml-document"></span><h3>Converting a Tree to an XML Document<a class="headerlink" href="#converting-a-tree-to-an-xml-document" title="Permalink to this headline">¶</a></h3>
+<p>There is a function for converting given XML tree into a null terminated
+string.</p>
+<p>iks_string
+Function
+:
+char *
+iks_string
+(
+ikstack*
+stack
+,
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Converts given tree into a string. String is created inside the given
+object stack. Returns a pointer to the string, or NULL if there isn’t
+enough memory available.</p>
+<p>If stack is NULL, string is created inside an <code class="docutils literal notranslate"><span class="pre">iks_malloc</span></code>ed
+buffer. You can free it later with <code class="docutils literal notranslate"><span class="pre">iks_free</span></code> function.</p>
+</div></blockquote>
+<p>Here is an example which builds a tree and print it.</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+<span class="l l-Scalar l-Scalar-Plain">char *t;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">x = iks_new (&quot;test&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;a&quot;), &quot;1234&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert (x, &quot;br&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;1234&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">t = iks_string (iks_stack (x), x);</span>
+<span class="l l-Scalar l-Scalar-Plain">puts (t);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_delete (x);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parsing-a-document-into-a-tree">
+<span id="parsing-an-xml-document-into-a-tree"></span><h3>Parsing a Document into a Tree<a class="headerlink" href="#parsing-a-document-into-a-tree" title="Permalink to this headline">¶</a></h3>
+<p>If you want to automatically convert an XML document into a tree, you
+can use iksemel’s DOM parser. It is created with following function:</p>
+<p>iks_dom_new
+Function
+:
+iksparser*
+iks_dom_new
+(
+iks
+**
+iksptr
+)
+;</p>
+<blockquote>
+<div><p>Creates a DOM parser. A pointer to the created XML tree is put into
+the variable pointed by iksptr. Returns a pointer to the parser, or
+NULL is there isn’t enough memory.</p>
+</div></blockquote>
+<p>Usage is same as SAX parser. You feed the data with <code class="docutils literal notranslate"><span class="pre">iks_parse</span></code>, and
+if there isn’t an error, you can access to your tree from variable
+<code class="docutils literal notranslate"><span class="pre">*iksptr</span></code>.</p>
+<p>Here is a simple example:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+<span class="l l-Scalar l-Scalar-Plain">iksparser *p;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">p = iks_dom_new (&amp;x);</span>
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_parse (p, &quot;&lt;a&gt;bcd&lt;/a&gt;&quot;, 9, 1)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;parse error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">/* x is useable after that point */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/* this will print &#39;bcd&#39; */</span>
+<span class="l l-Scalar l-Scalar-Plain">printf (&quot;%s\n&quot;, iks_cdata (iks_child (x)));</span>
+</pre></div>
+</div>
+<p>If you know the size of the file ahead, or you have an approximate idea,
+you can tell this to the dom parser for choosing a better memory
+allocation strategy. Here is the function for this.</p>
+<p>iks_set_size_hint
+Function
+:
+void
+iks_set_size_hint
+(
+iksparser
+*
+prs
+,
+size_t
+approx_size
+)
+;</p>
+<blockquote>
+<div><p>Parser prs must be a dom type parser. approx_size is the expected
+size of the xml document. Parser chooses its chunk size based on this
+information. Helps performance while processing big files.</p>
+</div></blockquote>
+<p>If you already have your XML document in memory, you can simply parse it
+with:</p>
+<p>iks_tree
+Function
+:
+iks *
+iks_tree
+(
+const
+char
+*
+xml_str
+,
+size_t
+len
+,
+int
+*
+err
+)
+;</p>
+<blockquote>
+<div><p>This function parses the buffer pointed by xml_str. If len is zero
+buffer is considered as a null terminated utf8 string. Returns the
+parsed tree, or NULL if there is an error. If err is not NULL, actual
+error code (returned by iks_parse) is put there.</p>
+</div></blockquote>
+<p>Most of the times you want to load your configuration (or similar) files
+directly into trees. iksemel provides two functions to greatly simplify
+this:</p>
+<p>iks_load
+Function
+:
+int
+iks_load
+(
+const
+char
+*
+fname
+,
+iks
+**
+xptr
+)
+;</p>
+<blockquote>
+<div><p>Loads the XML file. Tree is placed into the variable pointed by xptr.</p>
+</div></blockquote>
+<p>iks_save
+Function
+:
+int
+iks_save
+(
+const
+char
+*
+fname
+,
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Converts tree x into a string and saves to the file.</p>
+</div></blockquote>
+<p>Both functions return same error codes as <code class="docutils literal notranslate"><span class="pre">iks_parse</span></code>. Some additional
+error codes are defined for indicating file problems. They are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_FILE_NOFILE</span></code></dt><dd><p>A file with the given name doesn’t exist.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_FILE_NOACCESS</span></code></dt><dd><p>Cannot open file. Possibly a permission problem.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_FILE_RWERR</span></code></dt><dd><p>Read or write operation failed.</p>
+</dd>
+</dl>
+<p>Here is a simple example which parses a file and saves it into another:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_load (&quot;file1.xml&quot;, &amp;x)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;loading error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_save (&quot;file2.xml&quot;, x)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;saving error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="xml-streams">
+<span id="id7"></span><h2>XML Streams<a class="headerlink" href="#xml-streams" title="Permalink to this headline">¶</a></h2>
+<p>XML streams function as containers for any XML chunks sent
+asynchronously between network endpoints. They are used for
+asyncronously exchanging relatively small payload of structured
+information between entities.</p>
+<p>A stream is initiated by one of hosts connecting to the other, and
+sending a &lt;stream:stream&gt; tag. Receiving entity replies with a second
+XML stream back to the initiating entity within the same connection.
+Each unit of information is send as a direct child tag of the
+&lt;stream:stream&gt; tag. Stream is closed with &lt;/stream:stream&gt;.</p>
+<p>XML streams use a subset of XML. Specifically they should not contain
+processing instructions, non-predefined entities, comments, or DTDs.</p>
+<p>Jabber protocol uses XML streams for exchanging messages, presence
+information, and other information like authorization, search, time and
+version queries, protocol extensions.</p>
+<p>iksemel provides you a stream parser, which automatically handles
+connection to the server, and calls your hook function with incoming
+information parsed and converted to an XML tree.</p>
+<p>You can create such a parser with:</p>
+<p>iks_stream_new
+Function
+:
+iksparser*
+iks_stream_new
+(
+char*
+name_space
+,
+void*
+user_data
+,
+iksStreamHook*
+streamHook
+)
+;</p>
+<blockquote>
+<div><p>Allocates and initalizes a stream parser. name_space indicates the
+stream type, jabber clients use &quot;jabber:client&quot; namespace.
+user_data is passed directly to your hook function.</p>
+</div></blockquote>
+<p>iksStreamHook
+Typedef
+:
+iksStreamHook</p>
+<blockquote>
+<div><p>int iksStreamHook (void* user_data, int type, iks* node);</p>
+<p>Depending on the value of the type, node contains:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NODE_START</span></code></dt><dd><p>Got the &lt;stream:stream&gt; tag, namespace, stream id and other
+information is contained in the node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NODE_NORMAL</span></code></dt><dd><p>A first level child of the &lt;stream:stream&gt; tag is received. node
+contains the parsed tag. If you are connected to a jabber server,
+you can get &lt;message&gt;, &lt;presence&gt;, or &lt;iq&gt; tags.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NODE_ERROR</span></code></dt><dd><p>Got a &lt;stream:error&gt; tag, details can be accessed from node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NODE_STOP</span></code></dt><dd><p>&lt;/stream:stream&gt; tag is received or connection is closed, node is
+<code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd>
+</dl>
+<p>Freeing the node with <code class="docutils literal notranslate"><span class="pre">iks_delete</span></code> is up to you.</p>
+</div></blockquote>
+<p>You can manually feed this parser with <code class="docutils literal notranslate"><span class="pre">iks_parse</span></code> function, but using
+iksemel’s connection facilities is easier for most of the cases.</p>
+<p>This functions return <code class="docutils literal notranslate"><span class="pre">IKS_OK</span></code> for success. Error codes of
+<code class="docutils literal notranslate"><span class="pre">iks_parse</span></code> are used in same manner. Following additional codes are
+defined for network related problems:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NET_NODNS</span></code></dt><dd><p>Hostname lookup failed. Possible reasons: hostname is incorrect, you
+are not online, your dns server isn’t accessible.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NET_NOSOCK</span></code></dt><dd><p>Socket cannot created.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NET_NOCONN</span></code></dt><dd><p>Connection attemp failed. Possible reasons: host is not an XML stream
+server, port number is wrong, server is busy or closed for the
+moment.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_NET_RWERR</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">send</span></code> or <code class="docutils literal notranslate"><span class="pre">recv</span></code> call is failed when attempting to exchange the
+data with the server. You should close the connection with
+<code class="docutils literal notranslate"><span class="pre">iks_disconnect</span></code> after getting this error from data transfer
+functions.</p>
+</dd>
+</dl>
+<p>iks_connect_tcp
+Function
+:
+int
+iks_connect_tcp
+(
+iksparser
+*
+prs
+,
+const
+char
+*
+server
+,
+int
+port
+)
+;</p>
+<blockquote>
+<div><p>This function connects the parser to a server and sends stream header
+for you. server is the host name of the server and port is the tcp
+port number which server is listening to. You can use
+<code class="docutils literal notranslate"><span class="pre">IKS_JABBER_PORT</span></code> macro for the default jabber client port (5222).</p>
+</div></blockquote>
+<p>iks_connect_fd
+Function
+:
+int
+iks_connect_fd
+(
+iksparser
+*
+prs
+,
+int
+fd
+)
+;</p>
+<blockquote>
+<div><p>Attaches parser to an already opened connection. fd is the socket
+descriptor. Note that <code class="docutils literal notranslate"><span class="pre">iks_disconnect</span></code> doesn’t close the socket for
+this kind of connection, opening and closing of the socket is up to
+your application. Stream header is not sent automatically. You can
+use <code class="docutils literal notranslate"><span class="pre">iks_send_header</span></code> function for sending it.</p>
+</div></blockquote>
+<p>iks_disconnect
+Function
+:
+void
+iks_disconnect
+(
+iksparser
+*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Closes connection to the server, and frees connection resources.</p>
+</div></blockquote>
+<p>After successfully connecting to a server, you can use following
+functions for exchanging information with server.</p>
+<p>iks_recv
+Function
+:
+int
+iks_recv
+(
+iksparser*
+prs
+,
+int
+timeout
+)
+;</p>
+<blockquote>
+<div><p>If timeout is <code class="docutils literal notranslate"><span class="pre">-1</span></code>, waits until some data arrives from server, and
+process the data. Your stream hook can be called if a complete chunk
+is arrived.</p>
+<p>If timeout is a positive integer, <code class="docutils literal notranslate"><span class="pre">iks_recv</span></code> returns if no data
+arrives for timeout seconds.</p>
+<p>If timeout is zero, <code class="docutils literal notranslate"><span class="pre">iks_recv</span></code> checks if there is any data waiting
+at the network buffer, and returns without waiting for data.</p>
+</div></blockquote>
+<p>iks_fd
+Function
+:
+int
+iks_fd
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Returns the file descriptor of the connected socket. You can use this
+in your <code class="docutils literal notranslate"><span class="pre">select</span></code> function or some other input loop to act whenever
+some data from the server arrives. This value of only valid between a
+successful <code class="docutils literal notranslate"><span class="pre">iks_connect_tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">iks_disconnect</span></code>.</p>
+</div></blockquote>
+<p>iks_send
+Function
+:
+int
+iks_send
+(
+iksparser*
+prs
+,
+iks*
+x
+)
+;</p>
+<blockquote>
+<div><p>Converts the tree given in x to a string, and sends to the server.
+String is created inside the object stack of x.</p>
+</div></blockquote>
+<p>iks_send_raw
+Function
+:
+int
+iks_send_raw
+(
+iksparser*
+prs
+,
+char*
+xmlstr
+)
+;</p>
+<blockquote>
+<div><p>Sends the string given in xmlstr to the server.</p>
+</div></blockquote>
+<p>iks_send_header
+Function
+:
+int
+iks_send_header
+(
+iksparser
+*
+prs
+,
+char
+*
+to
+)
+;</p>
+<blockquote>
+<div><p>Sends the stream header. to is the name of the server. Normally
+<code class="docutils literal notranslate"><span class="pre">iks_connect_tcp</span></code> function calls this for you. This is only useful
+if you are using <code class="docutils literal notranslate"><span class="pre">iks_connect_fd</span></code>.</p>
+</div></blockquote>
+<p>Sometimes it is useful to log incoming and outgoing data to your parser
+for debugging your applications. iksemel provides a logging facility for
+you.</p>
+<p>iks_set_log_hook
+Function
+:
+void
+iks_set_log_hook
+(
+iksparser*
+prs
+,
+iksLogHook*
+logHook
+)
+;</p>
+<blockquote>
+<div><p>Sets the log function for your stream parser. You can’t use this
+function on any other type of parser.</p>
+</div></blockquote>
+<p>iksLogHook
+Typedef
+:
+iksLogHook</p>
+<blockquote>
+<div><p>void iksLogHook (void* user_data, const char* data, size_t size,
+int is_incoming);</p>
+<p>user_data is same value which you give with <code class="docutils literal notranslate"><span class="pre">iks_stream_new</span></code>. data
+is size bytes of data. Be very careful that this data may be coming
+from other side of the connection and can contain malicius bytes. It
+isn’t checked by iksemel yet, so you should check it yourself before
+displaying or passing to other systems in your application or
+computer. If is_incoming is a non-zero value, data is incoming from
+server, otherwise it is outgoing to the server.</p>
+</div></blockquote>
+</div>
+<div class="section" id="writing-a-jabber-client">
+<span id="id8"></span><h2>Writing a Jabber Client<a class="headerlink" href="#writing-a-jabber-client" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="security">
+<span id="id9"></span><h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>iksemel supports TLS protocol for encrypted communication and SASL
+protocol for authentication. TLS is handled by gnutls library.</p>
+<p>iks_has_tls
+Function
+:
+int
+iks_has_tls
+(
+void
+)
+;</p>
+<blockquote>
+<div><p>If iksemel is compiled with gnutls library, this function returns a
+non-zero value indicating you can try encrypted connection with the
+server.</p>
+</div></blockquote>
+<p>iks_start_tls
+Function
+:
+int
+iks_start_tls
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Starts a TLS handshake over already connected parser. Returns IKS_OK
+or one of the IKS_NET_ errors. If handshake succeeds you’ll get
+another stream header from server.</p>
+</div></blockquote>
+<p>iks_is_secure
+Function
+:
+int
+iks_is_secure
+(
+iksparser*
+prs
+)
+;</p>
+<blockquote>
+<div><p>Returns a non-zero value if a secure connection is fully established
+between server.</p>
+</div></blockquote>
+<p>iks_start_sasl
+Function
+:
+int
+iks_start_sasl
+(
+iksparser*
+prs
+,
+enum
+ikssasltype
+type
+,
+char*
+username
+,
+char*
+pass
+)
+;</p>
+<blockquote>
+<div><p>Starts SASL operation.</p>
+</div></blockquote>
+<p>See tools/iksroster.c for a good example.</p>
+</div>
+<div class="section" id="packets">
+<span id="id10"></span><h3>Packets<a class="headerlink" href="#packets" title="Permalink to this headline">¶</a></h3>
+<p>iksemel can parse a jabber XML node and provide you a public packet
+structure which contains information like node type and subtype, id,
+namespace, sender’s jabber id, etc.</p>
+<p>This handles a lot of node parsing for you. Packets are also used in the
+packet filter subsystem.</p>
+<p>iks_packet
+Function
+:
+ikspak *
+iks_packet
+(
+iks
+*
+x
+)
+;</p>
+<blockquote>
+<div><p>Takes a node from stream and extracts information from it to a packet
+structure. Structure is allocated inside the node’s object stack.</p>
+</div></blockquote>
+<p>ikspak
+<code class="docutils literal notranslate"><span class="pre">ikspak</span></code> structure has following fields:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">iks</span> <span class="pre">*x;</span></code></dt><dd><p>This is a pointer to the node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">iksid</span> <span class="pre">*from;</span></code></dt><dd><p>Sender’s jabber id in parsed form. See below for <code class="docutils literal notranslate"><span class="pre">iksid</span></code> structure.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">iks</span> <span class="pre">*query;</span></code></dt><dd><p>A pointer to the &lt;query&gt; tag for IQ nodes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*ns;</span></code></dt><dd><p>Namespace of the content for IQ nodes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*id;</span></code></dt><dd><p>ID of the node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">ikspaktype</span> <span class="pre">type;</span></code></dt><dd><p>Type of the node. Possible types are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_PAK_NONE</span></code></dt><dd><p>Unknown node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_PAK_MESSAGE</span></code></dt><dd><p>Message node.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_PAK_PRESENCE</span></code></dt><dd><p>Presence node with presence publishing operation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_PAK_S10N</span></code></dt><dd><p>Presence node with subscription operation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_PAK_IQ</span></code></dt><dd><p>IQ node.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">iksubtype</span> <span class="pre">subtype;</span></code></dt><dd><p>Sub type of the node. Sub types for message nodes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_NONE</span></code></dt><dd><p>A normal message.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_CHAT</span></code></dt><dd><p>Private chat message.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_GROUPCHAT</span></code></dt><dd><p>Multi user chat message.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_HEADLINE</span></code></dt><dd><p>Message from a news source.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_ERROR</span></code></dt><dd><p>Message error.</p>
+</dd>
+</dl>
+<p>Sub types for IQ nodes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_GET</span></code></dt><dd><p>Asks for some information.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_SET</span></code></dt><dd><p>Request for changing information.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_RESULT</span></code></dt><dd><p>Reply to get and set requests.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_ERROR</span></code></dt><dd><p>IQ error.</p>
+</dd>
+</dl>
+<p>Sub types for subscription nodes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_SUBSCRIBE,</span></code></dt><dd><p>Asks for subscribing to the presence.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_SUBSCRIBED,</span></code></dt><dd><p>Grants subscription.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_UNSUBSCRIBE,</span></code></dt><dd><p>Asks for unsubscribing to the presence.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_UNSUBSCRIBED,</span></code></dt><dd><p>Cancels subscription.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_ERROR</span></code></dt><dd><p>Presence error.</p>
+</dd>
+</dl>
+<p>Sub types for presence nodes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_PROBE,</span></code></dt><dd><p>Asks presence status.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_AVAILABLE,</span></code></dt><dd><p>Publishes entity as available. More information can be found in
+<code class="docutils literal notranslate"><span class="pre">show</span></code> field.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_TYPE_UNAVAILABLE</span></code></dt><dd><p>Publishes entity as unavailable. More information can be found in
+<code class="docutils literal notranslate"><span class="pre">show</span></code> field.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">ikshowtype</span> <span class="pre">show;</span></code></dt><dd><p>Presence state for the presence nodes.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_UNAVAILABLE</span></code></dt><dd><p>Entity is unavailable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_AVAILABLE</span></code></dt><dd><p>Entity is available.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_CHAT</span></code></dt><dd><p>Entity is free for chat.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_AWAY</span></code></dt><dd><p>Entity is away for a short time.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_XA</span></code></dt><dd><p>Entity is away for a long time.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_SHOW_DND</span></code></dt><dd><p>Entity doesn’t want to be disturbed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>iksemel has two functions to parse and compare jabber IDs.</p>
+<p>iks_id_new
+Function
+:
+iksid *
+iks_id_new
+(
+ikstack
+*
+s
+,
+const
+char
+*
+jid
+)
+;</p>
+<blockquote>
+<div><p>Parses a jabber id into its parts. <code class="docutils literal notranslate"><span class="pre">iksid</span></code> structure is created
+inside the s object stack.</p>
+</div></blockquote>
+<p>iksid
+<code class="docutils literal notranslate"><span class="pre">iksid</span></code> structure has following fields:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*user;</span></code></dt><dd><p>User name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*server;</span></code></dt><dd><p>Server name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*resource;</span></code></dt><dd><p>Resource.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*partial;</span></code></dt><dd><p>User name and server name.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*full;</span></code></dt><dd><p>User name, server name and resource.</p>
+</dd>
+</dl>
+<p>You can access this fields and read their values. Comparing two parsed
+jabber ids can be done with:</p>
+<p>iks_id_cmp
+Function
+:
+int
+iks_id_cmp
+(
+iksid
+*
+a
+,
+iksid
+*
+b
+,
+int
+parts
+)
+;</p>
+<blockquote>
+<div><p>Compares parts of a and b. Part values are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">IKS_ID_USER</span></code>
+<code class="docutils literal notranslate"><span class="pre">IKS_ID_SERVER</span></code>
+<code class="docutils literal notranslate"><span class="pre">IKS_ID_RESOURCE</span></code></p>
+<p>You can combine this values with <code class="docutils literal notranslate"><span class="pre">or</span></code> operator. Some common
+combinations are predefined for you:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_ID_PARTIAL</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">IKS_ID_USER</span> <span class="pre">|</span> <span class="pre">IKS_ID_SERVER</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_ID_FULL</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">IKS_ID_USER</span> <span class="pre">|</span> <span class="pre">IKS_ID_SERVER</span> <span class="pre">|</span> <span class="pre">IKS_ID_RESOURCE</span></code></p>
+</dd>
+</dl>
+<p>Return value is <code class="docutils literal notranslate"><span class="pre">0</span></code> for equality. If entities are not equal a
+combination of part values showing different parts is returned.</p>
+</div></blockquote>
+</div>
+<div class="section" id="packet-filter">
+<span id="id11"></span><h3>Packet Filter<a class="headerlink" href="#packet-filter" title="Permalink to this headline">¶</a></h3>
+<p>Packet filter handles routing incoming packets to related functions.</p>
+<p>iksfilter
+iks_filter_new
+Function
+:
+iksfilter *
+iks_filter_new
+(
+void
+)
+;</p>
+<blockquote>
+<div><p>Creates a new packet filter.</p>
+</div></blockquote>
+<p>iks_filter_packet
+Function
+:
+void
+iks_filter_packet
+(
+iksfilter
+*
+f
+,
+ikspak
+*
+pak
+)
+;</p>
+<blockquote>
+<div><p>Feeds the filter with given packet. Packet is compared to registered
+rules and hook functions of the matching rules are called in most
+matched to least matched order.</p>
+</div></blockquote>
+<p>iks_filter_delete
+Function
+:
+void
+iks_filter_delete
+(
+iksfilter
+*
+f
+)
+;</p>
+<blockquote>
+<div><p>Frees filter and rules.</p>
+</div></blockquote>
+<p>Rules are created with following function:</p>
+<p>iksrule
+iks_filter_add_rule
+Function
+:
+iksrule *
+iks_filter_add_rule
+(
+iksfilter
+*
+f
+,
+iksFilterHook
+*
+filterHook
+,
+void
+*
+user_data
+,
+…
+)
+;</p>
+<blockquote>
+<div><p>Adds a rule to the filter f. user_data is passed directly to your
+hook function filterHook.</p>
+<p>A rule consist of one or more type and value pairs. Possible types:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_ID</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code> value to packet ids.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_FROM</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code> value to packet senders.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_FROM_PARTIAL</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code> value to packet sender. Ignores resource part
+of jabber id.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_NS</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code> value to namespace of iq packets.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_TYPE</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">int</span></code> value to packet types.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_SUBTYPE</span></code></dt><dd><p>Compares <code class="docutils literal notranslate"><span class="pre">int</span></code> value to packet sub types.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_RULE_DONE</span></code></dt><dd><p>Terminates the rule pairs.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Here is an example which creates a filter and adds three rules:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iksfilter *f;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">f = iks_filter_new ();</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_msg, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_MESSAGE,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_auth_result, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_IQ,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_SUBTYPE, IKS_TYPE_RESULT,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_ID, &quot;auth&quot;,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_roster_push, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_IQ,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_SUBTYPE, IKS_TYPE_SET,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_NS, &quot;jabber:iq:roster&quot;,</span>
+             <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+</pre></div>
+</div>
+<p>iksFilterHook
+Typedef
+:
+iksFilterHook</p>
+<blockquote>
+<div><p>int iksFilterHook (void *user_data, ikspak *pak);</p>
+<p>Your hook is called with your user_data and matching packet pak. You
+can return two different values from your hook:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_FILTER_PASS</span></code></dt><dd><p>Packet is forwarded to least matching rules.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IKS_FILTER_EAT</span></code></dt><dd><p>Filtering process for the packet ends.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>You can remove the rules with following functions:</p>
+<p>iks_filter_remove_rule
+Function
+:
+void
+iks_filter_remove_rule
+(
+iksfilter
+*
+f
+,
+iksrule
+*
+rule
+)
+;</p>
+<blockquote>
+<div><p>Removes the rule from filter.</p>
+</div></blockquote>
+<p>iks_filter_remove_hook
+Function
+:
+void
+iks_filter_remove_hook
+(
+iksfilter
+*
+f
+,
+iksFilterHook
+*
+filterHook
+)
+;</p>
+<blockquote>
+<div><p>Remove the rules using filterHook function from filter.</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-common-packets">
+<span id="id12"></span><h3>Creating Common Packets<a class="headerlink" href="#creating-common-packets" title="Permalink to this headline">¶</a></h3>
+<p>A usual jabber network traffic contains many similar XML constructs.
+iksemel provides several utility functions for creating them. They all
+generate an XML tree, so you can add or modify some parts of the tree,
+and send to server then.</p>
+<p>iks_make_auth
+Function
+:
+iks *
+iks_make_auth
+(
+iksid
+*
+id
+,
+const
+char
+*
+pass
+,
+const
+char
+*
+sid
+)
+;</p>
+<blockquote>
+<div><p>Creates an authorization packet. id is your parsed jabber id, and
+pass is your password.</p>
+<p>If stream id sid isn’t NULL, SHA1 authentication is used, otherwise
+password is attached in plain text. You can learn stream id from
+<code class="docutils literal notranslate"><span class="pre">IKS_STREAM_START</span></code> packet in your stream hook like this:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">char *sid;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">if (type == IKS_STREAM_START) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">sid = iks_find_attrib (node, &quot;id&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>iks_make_msg
+Function
+:
+iks *
+iks_make_msg
+(
+enum
+iksubtype
+type
+,
+const
+char
+*
+to
+,
+const
+char
+*
+body
+)
+;</p>
+<blockquote>
+<div><p>Creates a message packet. type is the message type, to is jabber id
+of the recipient, body is the message.</p>
+</div></blockquote>
+<p>iks_make_s10n
+Function
+:
+iks *
+iks_make_s10n
+(
+enum
+iksubtype
+type
+,
+const
+char
+*
+to
+,
+const
+char
+*
+msg
+)
+;</p>
+<blockquote>
+<div><p>Creates a presence packet for subscription operations. type is
+operation, to is jabber id of the recipient, msg is a small message
+for introducing yourself, or explaning the reason of why you are
+subscribing or unsubscribing.</p>
+</div></blockquote>
+<p>iks_make_pres
+Function
+:
+iks *
+iks_make_pres
+(
+enum
+ikshowtype
+show
+,
+const
+char
+*
+status
+)
+;</p>
+<blockquote>
+<div><p>Creates a presence packet for publishing your presence. show is your
+presence state and status is a message explaining why you are not
+available at the moment, or what you are doing now.</p>
+</div></blockquote>
+<p>iks_make_iq
+Function
+:
+iks *
+iks_make_iq
+(
+enum
+iksubtype
+type
+,
+const
+char
+*
+xmlns
+)
+;</p>
+<blockquote>
+<div><p>Creates an IQ packet. type is operation type and xmlns is the
+namespace of the content. You usually have to add real content to the
+&lt;query&gt; tag before sending this packet.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="utility-functions">
+<span id="id13"></span><h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-utilities">
+<h3>Memory Utilities<a class="headerlink" href="#memory-utilities" title="Permalink to this headline">¶</a></h3>
+<p>iks_malloc
+Function
+:
+void *
+iks_malloc
+(
+size_t
+size
+)
+;
+iks_free
+Function
+:
+void
+iks_free
+(
+void
+*
+ptr
+)
+;
+These are wrappers around ANSI malloc and free functions used by the
+iksemel library itself. You can free the output of iks_string (only if
+you passed it a NULL stack) with iks_free for example. That is important
+if you are using a malloc debugger in your application but not in
+iksemel or vice versa.</p>
+</div>
+<div class="section" id="string-utilities">
+<h3>String Utilities<a class="headerlink" href="#string-utilities" title="Permalink to this headline">¶</a></h3>
+<p>iks_strdup
+Function
+:
+char *
+iks_strdup
+(
+const
+char
+*
+src
+)
+;
+iks_strcmp
+Function
+:
+int
+iks_strcmp
+(
+const
+char
+*
+a
+,
+const
+char
+*
+b
+)
+;
+iks_strcasecmp
+Function
+:
+int
+iks_strcasecmp
+(
+const
+char
+*
+a
+,
+const
+char
+*
+b
+)
+;
+iks_strncmp
+Function
+:
+int
+iks_strncmp
+(
+const
+char
+*
+a
+,
+const
+char
+*
+b
+,
+size_t
+n
+)
+;
+iks_strncasecmp
+Function
+:
+int
+iks_strncasecmp
+(
+const
+char
+*
+a
+,
+const
+char
+*
+b
+,
+size_t
+n
+)
+;
+iks_strlen
+Function
+:
+size_t
+iks_strlen
+(
+const
+char
+*
+src
+)
+;
+These functions work exactly like their ANSI equivalents except that
+they allow NULL values for string pointers. If src is NULL, iks_strdup
+and iks_strlen returns zero. If a or b is NULL in string comparisation
+functions they return -1.</p>
+<p>Their usefulness comes from the fact that they can chained with DOM
+traversing functions like this:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">if (iks_strcmp (iks_find_attrib (x, &quot;id&quot;), &quot;x1&quot;) == 0) count++;</span>
+</pre></div>
+</div>
+<p>That example works even x doesn’t have an ‘id’ attribute and
+iks_find_attrib returns NULL. So you don’t need to use temporary
+variables in such situations.</p>
+</div>
+<div class="section" id="sha1-hash">
+<h3>SHA1 Hash<a class="headerlink" href="#sha1-hash" title="Permalink to this headline">¶</a></h3>
+<p>Secure Hash Algorithm (SHA1) is used in the Jabber authentication
+protocol for encoding your password when sending to the server. This is
+normally handled by iks_make_auth() function, but if you want to handle
+it manually, or if you need a good hash function for other purproses you
+can use these functions.</p>
+<p>iks_sha_new
+Function
+:
+iksha*
+iks_sha_new
+(
+void
+)
+;</p>
+<blockquote>
+<div><p>Allocates a structure for keeping calculation values and the state.</p>
+</div></blockquote>
+<p>iks_sha_reset
+Function
+:
+void
+iks_sha_reset
+(
+iksha
+*
+sha
+)
+;</p>
+<blockquote>
+<div><p>Resets the state of the calculation.</p>
+</div></blockquote>
+<p>iks_sha_hash
+Function
+:
+void
+iks_sha_hash
+(
+iksha
+*
+sha
+,
+const
+unsigned
+char
+*
+data
+,
+int
+len
+,
+int
+finish
+)
+;</p>
+<blockquote>
+<div><p>Calculates the hash value of the given data. If finish is non zero,
+applies the last step of the calculation.</p>
+</div></blockquote>
+<p>iks_sha_print
+Function
+:
+void
+iks_sha_print
+(
+iksha
+*
+sha
+,
+char
+*
+hash
+)
+;</p>
+<blockquote>
+<div><p>Prints the result of a finished calculation into the buffer pointed
+by hash in hexadecimal string form. Buffer must be at least 40 bytes
+long. String is not null terminated.</p>
+</div></blockquote>
+<p>iks_sha
+Function
+:
+void
+iks_sha
+(
+const
+char
+*
+data
+,
+char
+*
+hash
+)
+;</p>
+<blockquote>
+<div><p>Calculates the hash value of data and prints into hash. This is a
+helper function for simple hash calculations. It calls other
+functions for the actual work.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="development">
+<span id="id14"></span><h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains information on plan, procedure and standarts of
+iksemel development.</p>
+<div class="section" id="roadmap">
+<h2>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h2>
+<p>There are three main functions iksemel tries to provide to applications:</p>
+<ul class="simple">
+<li><p>A generic XML parser with SAX and DOM interfaces.</p></li>
+<li><p>XML stream client and server functionality.</p></li>
+<li><p>Utilities for Jabber clients.</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">2. Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials.html#parsing-an-xml-document">2.1. Parsing an XML Document</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials.html#working-with-xml-trees">2.2. Working with XML Trees</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#memory-management">2.2.1. Memory Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#creating-a-tree">2.2.2. Creating a Tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#accessing-a-tree">2.2.3. Accessing a Tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#converting-a-tree-to-an-xml-document">2.2.4. Converting a Tree to an XML Document</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#parsing-a-document-into-a-tree">2.2.5. Parsing a Document into a Tree</a></li>
+<p>Goal of the iksemel is providing these functions while supporting
+embedded environments, keeping usage simple, and having a robust
+implementation.</p>
+<p>Some decisions are made to reach this goal:</p>
+<p>Code is written in ANSI C with a single dependency on C library. Instead
+of using expat or libxml, a simple built-in parser is used. Similarly
+glib and gnu only features of glibc (like object stacks) are avoided and
+built-in memory and string utilities are used. This may seem like code
+duplication but since they are optimized for iksemel and only a few kb
+in size, it isn’t a big disadvantage.</p>
+<p>Code is placed files in a modular fashion, and different modules don’t
+depend on others’ internal details. This allows taking unneeded
+functionality out when building for low resource situations.</p>
+<p>It is tried to give functions names which are consistent, clear and
+short.</p>
+<p>API is documented with texinfo for high quality printed output and info
+file output for fast and simple access during application development.
+Instead of using an autogenerated system or simply listing function
+descriptions, a task oriented tutorial approach is used.</p>
+</div>
+<div class="section" id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this headline">¶</a></h2>
+<p>Here is a short list describing preferred coding style for iksemel.
+Please keep in mind when sending patches.</p>
+<ul class="simple">
+<li><p>Indentation is done with tabs. Aligning is done with spaces.</p></li>
+<li><p>Placement of braces is K&amp;R style.</p></li>
+<li><p>Function names are put at the start of line.</p></li>
+<li><p>Function names are lowercase.</p></li>
+<li><p>Words of the function names are separated with underscore character.</p></li>
+<li><p>Structure and variable names are lowercase.</p></li>
+<li><p>Macro and enumarations names are uppercase.</p></li>
+<li><p>Exported library API is contained in the single iksemel.h file.</p></li>
+<li><p>Exported function names start with iks_</p></li>
+<li><p>Exported structure and type names start with iks</p></li>
+<li><p>Exported macro and enumaration names start with IKS_</p></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials.html#xml-streams">2.3. XML Streams</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials.html#writing-a-jabber-client">2.4. Writing a Jabber Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#security">2.4.1. Security</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#packets">2.4.2. Packets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#packet-filter">2.4.3. Packet Filter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#creating-common-packets">2.4.4. Creating Common Packets</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Tutorials.html#utility-functions">2.5. Utility Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#memory-utilities">2.5.1. Memory Utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#string-utilities">2.5.2. String Utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Tutorials.html#sha1-hash">2.5.3. SHA1 Hash</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Development.html">3. Development</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Development.html#roadmap">3.1. Roadmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Development.html#coding-style">3.2. Coding Style</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Development.html#resources">3.3. Resources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Development.html#datatype-index">3.3.1. Datatype Index</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Development.html#function-index">3.3.2. Function Index</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<p>Here is an example:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_new_func (char *text)</span>
+<span class="l l-Scalar l-Scalar-Plain">{</span>
+    <span class="l l-Scalar l-Scalar-Plain">int i;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">i = an_internal_func (text);</span>
+    <span class="l l-Scalar l-Scalar-Plain">if (IKS_SOME_VALUE == i) {</span>
+        <span class="l l-Scalar l-Scalar-Plain">iks_some_func (text);</span>
+        <span class="l l-Scalar l-Scalar-Plain">i++;</span>
+    <span class="l l-Scalar l-Scalar-Plain">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">return i;</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>RFC 2279, UTF-8 format <a class="reference external" href="http://www.ietf.org/rfc/rfc2279.txt">http://www.ietf.org/rfc/rfc2279.txt</a></p></li>
+<li><p>W3C Recommendation, Extensible Markup Language 1.0
+<a class="reference external" href="http://www.w3.org/TR/REC-xml">http://www.w3.org/TR/REC-xml</a></p></li>
+<li><p>Annotated XML Specification <a class="reference external" href="http://www.xml.com/axml/testaxml.htm">http://www.xml.com/axml/testaxml.htm</a></p></li>
+<li><p>Jabber Protocol Documents <a class="reference external" href="http://www.jabber.org/protocol/">http://www.jabber.org/protocol/</a></p></li>
 </ul>
 </div>
-<p>&#64;end ifinfo</p>
+</div>
+<div class="section" id="datatype-index">
+<span id="id15"></span><h1>Datatype Index<a class="headerlink" href="#datatype-index" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="function-index">
+<span id="id16"></span><h1>Function Index<a class="headerlink" href="#function-index" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -221,20 +2611,13 @@ MA 02111-1307, USA.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Introduction.html" class="btn btn-neutral float-right" title="1. Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2016-2020 Zaryob
+        &copy; Copyright 2001-2003 G@&#39;urer @&#39;Ozen
       <span class="lastupdated">
         Last updated on Jun 13, 2020.
       </span>
