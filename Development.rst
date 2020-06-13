@@ -12,11 +12,11 @@ Roadmap
 
 There are three main functions iksemel tries to provide to applications:
 
-* 
+*
   A generic XML parser with SAX and DOM interfaces.
-* 
+*
   XML stream client and server functionality.
-* 
+*
   Utilities for Jabber clients.
 
 Goal of the iksemel is providing these functions while supporting embedded
@@ -48,27 +48,27 @@ Coding Style
 Here is a short list describing preferred coding style for iksemel.
 Please keep in mind when sending patches.
 
-* 
+*
   Indentation is done with tabs. Aligning is done with spaces.
-* 
+*
   Placement of braces is K&R style.
-* 
+*
   Function names are put at the start of line.
-* 
+*
   Function names are lowercase.
-* 
+*
   Words of the function names are separated with underscore character.
-* 
+*
   Structure and variable names are lowercase.
-* 
+*
   Macro and enumarations names are uppercase.
-* 
+*
   Exported library API is contained in the single iksemel.h file.
-* 
+*
   Exported function names start with iks_
-* 
+*
   Exported structure and type names start with iks
-* 
+*
   Exported macro and enumaration names start with IKS_
 
 Here is an example:
@@ -88,19 +88,19 @@ Here is an example:
       }
       return i;
   }
-  
+
 
 Resources
 =========
 
 
-* 
+*
   RFC 2279, UTF-8 format `http://www.ietf.org/rfc/rfc2279.txt <http://www.ietf.org/rfc/rfc2279.txt>`_
-* 
+*
   W3C Recommendation, Extensible Markup Language 1.0 `http://www.w3.org/TR/REC-xml <http://www.w3.org/TR/REC-xml>`_
-* 
+*
   Annotated XML Specification `http://www.xml.com/axml/testaxml.htm <http://www.xml.com/axml/testaxml.htm>`_
-* 
+*
   Jabber Protocol Documents `http://www.jabber.org/protocol/ <http://www.jabber.org/protocol/>`_
 
 @comment ============================================================
@@ -118,4 +118,3 @@ Function Index
 @printindex fn
 
 @contents
-

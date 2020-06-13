@@ -27,21 +27,21 @@ Library can be built with:
 
   ./configure
   make
-  
+
 
 If you want to make a self test:
 
 ::
 
   make test
-  
+
 
 Now you can install it with:
 
 ::
 
   make install
-  
+
 
 Using iksemel in Applications
 =============================
@@ -58,7 +58,7 @@ link with iksemel library. This can be done with:
 ::
 
   gcc -o myprg src1.o src2.o src3.o -liksemel
-  
+
 
 iksemel registers itself with pkg-config while installing, so if you are using
 autotools in your program, you can simply check the availability of iksemel
@@ -67,8 +67,7 @@ and configure your build process accordingly with:
 ::
 
   PKG_CHECK_MODULES(IKSEMEL,iksemel,,exit)
-  
+
 
 This would result in IKSEMEL_LIBS and IKSEMEL_CFLAGS substitution variables
 set to correct values.
-

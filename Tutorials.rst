@@ -71,7 +71,7 @@ want to finish parsing without giving data, call it like:
 ::
 
   iks_parse (my_parser, NULL, 0, 1);
-  
+
 
 You should check the return value for following conditions:
 
@@ -156,7 +156,7 @@ XML document. Write following code into a :file:`test.c` file.
       iks_parser_delete (p);
       return 0;
   }
-  
+
 
 Now compile and test it with:
 
@@ -165,7 +165,7 @@ Now compile and test it with:
   gcc -o test test.c -liksemel
   ./test "<test>Hello<br/>World!</test>"
   ./test "<lala a='12' b='42'/>"
-  
+
 
 @heading Error Handling
 
@@ -377,7 +377,7 @@ Now lets create a tree representation of following XML document:
   it's not dark yet, but it's getting there
   </body>
   </message>
-  
+
 
 here is the code:
 
@@ -403,7 +403,7 @@ here is the code:
   iks_insert_cdata (y, "it's not dark yet,", 0);
   iks_insert_cdata (y, "but it's getting there\\n", 0);
   iks_insert_cdata (x, "\\n", 1);
-  
+
 
 Notice how newlines are inserted for proper formatting of document. They aren't
 necessary for representing data, but they make it easier to read document for
@@ -555,7 +555,7 @@ XML playlist file:
       <fullscreen/>
       <noui/>
   </playlist>
-  
+
 
 and here is the code:
 
@@ -590,7 +590,7 @@ and here is the code:
       iks_delete (x);
       return 0;
   }
-  
+
 
 @comment ============================================================
 
@@ -624,7 +624,7 @@ Here is an example which builds a tree and print it.
   t = iks_string (iks_stack (x), x);
   puts (t);
   iks_delete (x);
-  
+
 
 @comment ============================================================
 
@@ -660,7 +660,7 @@ Here is a simple example:
 
   /* this will print 'bcd' */
   printf ("%s\\n", iks_cdata (iks_child (x)));
-  
+
 
 If you know the size of the file ahead, or you have an approximate idea,
 you can tell this to the dom parser for choosing a better memory allocation
@@ -719,7 +719,7 @@ Here is a simple example which parses a file and saves it into another:
   if (IKS_OK != iks_save ("file2.xml", x)) {
       puts ("saving error");
   }
-  
+
 
 @comment ============================================================
 
@@ -1208,7 +1208,7 @@ Here is an example which creates a filter and adds three rules:
   		     IKS_RULE_SUBTYPE, IKS_TYPE_SET,
   		     IKS_RULE_NS, "jabber:iq:roster",
   		     IKS_RULE_DONE);
-  
+
 
 .. index:: Typedef iksFilterHook
 
@@ -1261,7 +1261,7 @@ packet in your stream hook like this:
   if (type == IKS_STREAM_START) {
       sid = iks_find_attrib (node, "id");
   }
-  
+
 @end deftypefun
 
 @deftypefun {iks *} iks_make_msg (enum iksubtype `type`, const char *`to`, const char *`body`);
@@ -1340,7 +1340,7 @@ functions like this:
 ::
 
   if (iks_strcmp (iks_find_attrib (x, "id"), "x1") == 0) count++;
-  
+
 
 That example works even x doesn't have an 'id' attribute and iks_find_attrib
 returns NULL. So you don't need to use temporary variables in such
@@ -1383,4 +1383,3 @@ other functions for the actual work.
 @end deftypefun
 
 @comment ============================================================
-

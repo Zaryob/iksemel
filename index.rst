@@ -19,13 +19,12 @@ MA 02111-1307, USA.
    :maxdepth: 3
 
    Introduction
-   
+
    Tutorials
-   
+
    Development
-   
+
    Datatype_Index
-   
+
    Function_Index
 @end ifinfo
-
