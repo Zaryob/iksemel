@@ -1,0 +1,1296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Tutorials &mdash; Iksemel Documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Iksemel Documentation"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Development" href="Development.html" />
+    <link rel="prev" title="1. Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Inary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parsing-an-xml-document">2.1. Parsing an XML Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#working-with-xml-trees">2.2. Working with XML Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-management">2.2.1. Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-tree">2.2.2. Creating a Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-a-tree">2.2.3. Accessing a Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-a-tree-to-an-xml-document">2.2.4. Converting a Tree to an XML Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parsing-a-document-into-a-tree">2.2.5. Parsing a Document into a Tree</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#xml-streams">2.3. XML Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-a-jabber-client">2.4. Writing a Jabber Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#security">2.4.1. Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packets">2.4.2. Packets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packet-filter">2.4.3. Packet Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-common-packets">2.4.4. Creating Common Packets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-functions">2.5. Utility Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-utilities">2.5.1. Memory Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string-utilities">2.5.2. String Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sha1-hash">2.5.3. SHA1 Hash</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Development.html">3. Development</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Inary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">2. </span>Tutorials</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorials">
+<span id="id1"></span><h1><span class="section-number">2. </span>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<p>&#64;ifinfo
+&#64;end ifinfo</p>
+<p>&#64;comment ============================================================</p>
+<div class="section" id="parsing-an-xml-document">
+<span id="id2"></span><h2><span class="section-number">2.1. </span>Parsing an XML Document<a class="headerlink" href="#parsing-an-xml-document" title="Permalink to this headline">¶</a></h2>
+<p>iksemel parser sequentally processes the XML document. Each encountered XML
+element (i.e. tags, character data, comments, processing instructions, etc.)
+is reported to your application by calling the hook functions you have provided.
+This type of interface is called SAX (serial access) interface.</p>
+<p>&#64;tindex iksparser
+Parser stores its state in a small structure. This structure is referenced by
+<cite>iksparser</cite> type, and managed with following functions:</p>
+<p>&#64;deftypefun iksparser* iks_sax_new (void* <cite>user_data</cite>, iksTagHook* <cite>tagHook</cite>, iksCDataHook* <cite>cdataHook</cite>);
+This function allocates and initializes a parser structure. If allocation fails,
+NULL value is returned. <cite>user_data</cite> is passed directly to hook functions.
+&#64;end deftypefun</p>
+<dl id="index-0">
+<dt>Typedef iksTagHook</dt><dd><p>int iksTagHook (void* <cite>user_data</cite>, char* <cite>name</cite>, char** <cite>atts</cite>, int <cite>type</cite>);</p>
+<p>This function is called when a tag parsed. <cite>name</cite> is the name of the tag. If tag has
+no attributes <cite>atts</cite> is NULL, otherwise it contains a null terminated list of
+pointers to tag’s attributes and their values. If return value isn’t <cite>IKS_OK</cite>,
+it is passed immediately to the caller of the <cite>iks_parse</cite>.</p>
+<p><cite>type</cite> is one of the following:</p>
+</dd>
+<dt><em>IKS_OPEN</em></dt><dd><p>Opening tag, i.e. &lt;tag attr=’value’&gt;</p>
+</dd>
+<dt><em>IKS_CLOSE</em></dt><dd><p>Closing tag, i.e. &lt;/tag&gt;</p>
+</dd>
+<dt><em>IKS_SINGLE</em></dt><dd><p>Standalone tag, i.e. &lt;tag attr=’value’/&gt;</p>
+</dd>
+</dl>
+<dl id="index-1">
+<dt>Typedef iksCDataHook</dt><dd><p>int iksCDataHook (void* <cite>user_data</cite>, char* <cite>data</cite>, size_t <cite>len</cite>);</p>
+<p><cite>data</cite> is a pointer to the character data. Encoding is UTF-8 and it isn’t terminated
+with a null character. Size of the data is given with <cite>len</cite> in bytes. This function
+can be called several times with smaller sized data for a single string. If
+return value isn’t <cite>IKS_OK</cite>, it is passed immediately to the caller of the
+<cite>iks_parse</cite>.</p>
+</dd>
+</dl>
+<p>&#64;deftypefun int iks_parse (iksparser* <cite>prs</cite>, char <a href="#id3"><span class="problematic" id="id4">*</span></a><cite>data</cite>, size_t <cite>len</cite>, int <cite>finish</cite>);
+You give XML document to the parser with this function. <cite>data</cite>
+is a <cite>len</cite> bytes string. If <cite>len</cite> is zero, data must be a null
+terminated string.</p>
+<p>If <cite>finish</cite> value is zero, parser waits for more data later. If you
+want to finish parsing without giving data, call it like:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks_parse (my_parser, NULL, 0, 1);</span>
+</pre></div>
+</div>
+<p>You should check the return value for following conditions:</p>
+<dl class="simple">
+<dt><em>IKS_OK</em></dt><dd><p>There isn’t any problem.</p>
+</dd>
+<dt><em>IKS_NOMEM</em></dt><dd><p>Not enough memory.</p>
+</dd>
+<dt><em>IKS_BADXML</em></dt><dd><p>Document is not well-formed.</p>
+</dd>
+<dt><em>IKS_HOOK</em></dt><dd><p>Your hook decided that there is an error.</p>
+</dd>
+</dl>
+<p>&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_parser_delete (iksparser* <cite>prs</cite>);
+This function frees parser structure and associated data.
+&#64;end deftypefun</p>
+<p>Now we have learned how to create and use a sax parser. Lets parse a simple
+XML document. Write following code into a <code class="file docutils literal notranslate"><span class="pre">test.c</span></code> file.</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;iksemel.h&gt;
+
+int pr_tag (void *udata, char *name, char **atts, int type)
+{
+    switch (type) {
+        case IKS_OPEN:
+            printf (&quot;TAG &lt;%s&gt;\\n&quot;, name);
+            break;
+        case IKS_CLOSE:
+            printf (&quot;TAG &lt;/%s&gt;\\n&quot;, name);
+            break;
+        case IKS_SINGLE:
+            printf (&quot;TAG &lt;%s/&gt;\\n&quot;, name);
+            break;
+    }
+    if (atts) {
+        int i = 0;
+        while (atts[i]) {
+            printf (&quot;  ATTRIB %s=&#39;%s&#39;\\n&quot;, atts[i], atts[i+1]);
+            i += 2;
+        }
+    }
+    return IKS_OK;
+}
+
+enum ikserror pr_cdata (void *udata, char *data, size_t len)
+{
+    int i;
+    printf (&quot;CDATA [&quot;);
+    for (i = 0; i &lt; len; i++)
+        putchar (data[i]);
+    printf (&quot;]\\n&quot;);
+    return IKS_OK;
+}
+
+int main (int argc, char *argv[])
+{
+    iksparser *p;
+    p = iks_sax_new (NULL, pr_tag, pr_cdata);
+    switch (iks_parse (p, argv[1], 0, 1)) {
+        case IKS_OK:
+            puts (&quot;OK&quot;);
+            break;
+        case IKS_NOMEM:
+            puts (&quot;Not enough memory&quot;);
+            exit (1);
+        case IKS_BADXML:
+            puts (&quot;XML document is not well-formed&quot;);
+            exit (2);
+        case IKS_HOOK:
+            puts (&quot;Our hooks didn&#39;t like something&quot;);
+            exit (2);
+    }
+    iks_parser_delete (p);
+    return 0;
+}
+</pre></div>
+</div>
+<p>Now compile and test it with:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">gcc -o test test.c -liksemel</span>
+<span class="l l-Scalar l-Scalar-Plain">./test &quot;&lt;test&gt;Hello&lt;br/&gt;World!&lt;/test&gt;&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">./test &quot;&lt;lala a=&#39;12&#39; b=&#39;42&#39;/&gt;&quot;</span>
+</pre></div>
+</div>
+<p>&#64;heading Error Handling</p>
+<p>XML standart states that once an error is detected, the processor must not continue
+normal processing (i.e. it must not pass character data or markup information to
+the application). So iksemel stops processing immediately when it encounters a
+syntax error, or one of your hook functions return any one value than <cite>IKS_OK</cite>,
+and <cite>iks_parse</cite> function returns with the error code.</p>
+<p>Since it is useful for debugging, iksemel provides functions to get position of
+the error. Position is usually at the starting character for syntax errors. Since
+your hooks are called after whole element (i.e. markup or character data) is
+passed, position is at the end of the erroneous element for <cite>IKS_HOOK</cite> errors.</p>
+<p>&#64;deftypefun {unsigned long} iks_nr_bytes (iksparser* <cite>prs</cite>);
+Returns how many number of bytes parsed.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {unsigned long} iks_nr_lines (iksparser* <cite>prs</cite>);
+Returns how many number of lines parsed.
+&#64;end deftypefun</p>
+<p>If you want to parse another document with your parser again, you should use
+the following function to reset your parser.</p>
+<p>&#64;deftypefun void iks_parser_reset (iksparser* <cite>prs</cite>);
+Resets the parser’s internal state.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="working-with-xml-trees">
+<span id="id5"></span><h2><span class="section-number">2.2. </span>Working with XML Trees<a class="headerlink" href="#working-with-xml-trees" title="Permalink to this headline">¶</a></h2>
+<p>SAX interface uses very little memory, but it forces you to access XML
+documents sequentally. In many cases you want to keep a tree like
+representation of XML document in memory and want to access and
+modify its content randomly.</p>
+<p>iksemel provides functions for efficiently creating such trees either
+from documents or programmaticaly. You can access and modify this
+tree and can easily generate a new XML document from the tree.</p>
+<p>This is called DOM (Document Object Model) interface.</p>
+<p>&#64;ifinfo
+&#64;end ifinfo</p>
+<p>&#64;comment ============================================================</p>
+<div class="section" id="memory-management">
+<span id="id6"></span><h3><span class="section-number">2.2.1. </span>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
+<p>Since keeping whole document content uses a lot of memory and requires
+many calls to OS’s memory allocation layer, iksemel uses a simple object
+stack system for minimizing calls to the <cite>malloc</cite> function and releasing
+all the memory associated with a tree in a single step.</p>
+<p>A parsed XML tree contains following objects:</p>
+<dl class="simple">
+<dt><em>Nodes</em></dt><dd><p>These are basic blocks of document. They can contain a tag, attribute pair
+of a tag, or character data. Tag nodes can also contain other nodes as
+children. Node structure has a small fixed size depending on the node type.</p>
+</dd>
+<dt><em>Names</em></dt><dd><p>Names of tags and attributes. They are utf-8 encoded small strings.</p>
+</dd>
+<dt><em>Character Data</em></dt><dd><p>They are similar to names but usually much bigger.</p>
+</dd>
+</dl>
+<p>iksemel’s object stack has two separate areas for keeping these data objects.
+Meta chunk contains all the structures and aligned data, while the data chunk
+contains strings. Each chunk starts with a choosen size memory block, then
+when necessary more blocks allocated for providing space. Unless there is a big
+request, each block is double the size of the previous block, thus real memory
+needs are quickly reached without allocating too many blocks, or wasting
+memory with too big blocks.</p>
+<dl class="simple" id="index-2">
+<dt>Typedef ikstack</dt><dd><p>This is a structure defining the object stack. Its fields are private
+and subject to change with new iksemel releases.</p>
+</dd>
+</dl>
+<p>&#64;deftypefun {ikstack <a href="#id7"><span class="problematic" id="id8">*</span></a>} iks_stack_new (size_t <cite>meta_chunk</cite>, size_t <cite>data_chunk</cite>);
+Creates an object stack. <cite>meta_chunk</cite> is the initial size of the
+data block used for structures and aligned data. <cite>data_chunk</cite> is
+the initial size of the data block used for strings. They are both in byte units.</p>
+<p>These two initial chunks and a small object stack structure is allocated in
+one <cite>malloc</cite> call for optimization purproses.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {void <a href="#id9"><span class="problematic" id="id10">*</span></a>} iks_stack_alloc (ikstack * <cite>stack</cite>, size_t <cite>size</cite>);
+Allocates <cite>size</cite> bytes of space from the object stack’s meta chunk.
+Allocated space is aligned on platform’s default alignment boundary and
+isn’t initialized. Returns a pointer to the space, or NULL if there isn’t enough
+space available and allocating a new block fails.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {void <a href="#id11"><span class="problematic" id="id12">*</span></a>} iks_stack_strdup (ikstack * <cite>stack</cite>, const char * <cite>src</cite>, size_t <cite>len</cite>);
+Copies given string <cite>src</cite> into the object stack’s data chunk. Returns a
+pointer to the new string, or NULL if there isn’t enough space in the stack.
+If <cite>len</cite> is zero string must be null terminated.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_stack_delete (ikstack * <cite>stack</cite>);
+Gives all memory associated with object stack to the system.
+&#64;end deftypefun</p>
+<p>Since character data sections are usually parsed in separate blocks,
+a growable string implementation is necessary for saving memory.</p>
+<p>&#64;deftypefun {char <a href="#id13"><span class="problematic" id="id14">*</span></a>} iks_stack_strcat (ikstack <a href="#id15"><span class="problematic" id="id16">*</span></a><cite>stack</cite>, char <a href="#id17"><span class="problematic" id="id18">*</span></a><cite>old</cite>, size_t <cite>old_len</cite>, const char <a href="#id19"><span class="problematic" id="id20">*</span></a><cite>src</cite>, size_t <cite>src_len</cite>);
+This function appends the string <cite>src</cite> to the string <cite>old</cite> in the
+stack’s data chunk. If  <cite>old</cite> is NULL it behaves like <cite>iks_stack_strdup</cite>.
+Otherwise <cite>old</cite> has to be a string created with <cite>iks_stack_strdup</cite>
+or <cite>iks_stack_strcat</cite> functions.</p>
+<p>If <cite>old_len</cite> or <cite>src_len</cite> is zero, corresponding string must be null
+terminated.</p>
+<p>Since string can be moved into another block of the data chunk, you must use the
+returned value for new string, and must not reference to <cite>old</cite> anymore.
+Return value can be NULL if there isn’t enough space in stack, and allocating a
+new block fails.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="creating-a-tree">
+<span id="id21"></span><h3><span class="section-number">2.2.2. </span>Creating a Tree<a class="headerlink" href="#creating-a-tree" title="Permalink to this headline">¶</a></h3>
+<dl class="simple" id="index-3">
+<dt>Typedef iks</dt><dd><p>This is a structure defining a XML node. Its fields are private and only
+accessed by following functions.</p>
+</dd>
+</dl>
+<p>&#64;deftypefun iks* iks_new (const char <a href="#id22"><span class="problematic" id="id23">*</span></a><cite>name</cite>);
+Creates an object stack and creates a IKS_TAG type of node with given
+tag name inside the stack. Tag name is also copied into the stack.
+Returns the node pointer, or NULL if there isn’t enough memory.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_new_within (const char <em>`name`, ikstack</em> <cite>stack</cite>);
+Creates a IKS_TAG type of node with the given tag name. Node and tag
+name is allocated inside the given object stack. Returns the node
+pointer, or NULL if there isn’t enough memory.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_insert (iks <a href="#id24"><span class="problematic" id="id25">*</span></a><cite>x</cite>, const char <a href="#id26"><span class="problematic" id="id27">*</span></a><cite>name</cite>);
+Creates a IKS_TAG type of node with the given tag name. Node and tag
+name is allocated inside the <cite>x</cite> node’s object stack and linked
+to <cite>x</cite> as a child node. Returns the node pointer, or NULL if there
+isn’t enough memory.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_insert_cdata (iks* <cite>x</cite>, const char* <cite>data</cite>, size_t <cite>len</cite>);
+Creates a IKS_CDATA type of node with given character data. Node is
+allocated inside the <cite>x</cite> node’s object stack and linked to <cite>x</cite>
+as a child node. Data is copied as well. If <cite>len</cite> is zero data must
+be a null terminated string. Returns the node pointer, or NULL if
+there isn’t enough memory.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_insert_attrib (iks* <cite>x</cite>, const char* <cite>name</cite>, const char* <cite>value</cite>);
+Creates a IKS_ATTRIBUTE type of node with given attribute name and the
+value. Node is allocated inside the <cite>x</cite> node’s object stack and
+linked to <cite>x</cite> as an attribute node. Attribute name and value is
+copied as well. Returns the node pointer, or NULL if there isn’t
+enough memory.</p>
+<p>Reinserting another value with same attribute name changes an attribute’s
+value. If <cite>value</cite> is NULL, attribute is removed from the tag.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_insert_node (iks* <cite>x</cite>, iks* <cite>y</cite>);
+Links node <cite>y</cite> to node <cite>x</cite> as a child node. Nodes are not copied
+between object stacks, be careful.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_hide (iks <a href="#id28"><span class="problematic" id="id29">*</span></a><cite>x</cite>);
+Changes the links of the other nodes so that <cite>x</cite> becomes invisible.
+It stays in the same object stack with neighbour nodes, be careful.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_delete (iks <a href="#id30"><span class="problematic" id="id31">*</span></a><cite>x</cite>);
+Frees the object stack of the node <cite>x</cite>.
+&#64;end deftypefun</p>
+<p>Now lets create a tree representation of following XML document:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">&lt;message type=&#39;chat&#39; from=&#39;bob@bd.com&#39;&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;subject&gt;song lyric&lt;/subject&gt;&lt;priority&gt;high&lt;/priority&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;body&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;em style=&#39;underline&#39;&gt;here is the correct version:&lt;/em&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">i just don&#39;t see why i should even care</span>
+<span class="l l-Scalar l-Scalar-Plain">it&#39;s not dark yet, but it&#39;s getting there</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/body&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/message&gt;</span>
+</pre></div>
+</div>
+<p>here is the code:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x, *y, *z;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">x = iks_new (&quot;message&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (x, &quot;type&quot;, &quot;chat&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (x, &quot;from&quot;, &quot;bob@bd.com&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;subject&quot;), &quot;song lyric&quot;, 10);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;priority&quot;), &quot;high&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">y = iks_insert (x, &quot;body&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;\\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">z = iks_insert (y, &quot;em&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_attrib (z, &quot;style&quot;, &quot;underline&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (z, &quot;here is the correct version&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;\\n&quot;, 1);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;i just don&#39;t see why&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;i should even care\\n&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;it&#39;s not dark yet,&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (y, &quot;but it&#39;s getting there\\n&quot;, 0);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;\\n&quot;, 1);</span>
+</pre></div>
+</div>
+<p>Notice how newlines are inserted for proper formatting of document. They aren’t
+necessary for representing data, but they make it easier to read document for
+humans.</p>
+<p>Also notice how <cite>iks_insert</cite> and <cite>iks_insert_cdata</cite> chained.</p>
+<p>There are also functions for duplicating xml trees. They are:</p>
+<p>&#64;deftypefun {iks <em>} iks_copy (iks</em> <cite>x</cite>);
+Creates a full copy of the tree in a newly created object stack.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <em>} iks_copy_within (iks</em> <cite>x</cite>, ikstack <a href="#id32"><span class="problematic" id="id33">*</span></a><cite>s</cite>);
+Creates a full copy of the tree in given object stack.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="accessing-a-tree">
+<span id="id34"></span><h3><span class="section-number">2.2.3. </span>Accessing a Tree<a class="headerlink" href="#accessing-a-tree" title="Permalink to this headline">¶</a></h3>
+<p>Basic access functions allow you to move on the tree:</p>
+<p>&#64;deftypefun iks* iks_next (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_prev (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_parent (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_child (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_attrib (iks* <cite>x</cite>);
+&#64;end deftypefun</p>
+<p>These functions return a pointer to the next, previous, parent, first child,
+and first attribute node of the given node <cite>x</cite>. If that node doesn’t
+exist or <cite>x</cite> is NULL, a NULL value is returned.</p>
+<p>&#64;deftypefun {iks <a href="#id35"><span class="problematic" id="id36">*</span></a>} iks_root (iks <a href="#id37"><span class="problematic" id="id38">*</span></a><cite>x</cite>);
+Returns the topmost parent node of the <cite>x</cite>.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun iks* iks_next_tag (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_prev_tag (iks* <cite>x</cite>);
+&#64;end deftypefun
+&#64;deftypefun iks* iks_first_tag (iks* <cite>x</cite>);
+&#64;end deftypefun</p>
+<p>These functions return a pointer to the next, previous, first child node
+of the given node <cite>x</cite>. Only tag nodes are considered, other type
+of the nodes are skipped. If such a node doesn’t exist or <cite>x</cite> is NULL,
+a NULL value is returned.</p>
+<p>Another group of functions allow you to access specific information and
+content of the nodes:</p>
+<p>&#64;deftypefun ikstack* iks_stack (iks* <cite>x</cite>);
+Returns the object stack which node <cite>x</cite> stays.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {enum ikstype} iks_type (iks* <cite>x</cite>);
+Returns the type of the node.</p>
+<p>&#64;tindex ikstype</p>
+<dl class="simple">
+<dt><em>IKS_TAG</em></dt><dd><p>Node is a tag and can contain child nodes and attributes.</p>
+</dd>
+<dt><em>IKS_CDATA</em></dt><dd><p>Node contains character data.</p>
+</dd>
+<dt><em>IKS_ATTRIBUTE</em></dt><dd><p>Node contains an attribute and its value.</p>
+</dd>
+</dl>
+<p>&#64;end deftypefun</p>
+<p>&#64;deftypefun char* iks_name (iks* <cite>x</cite>);
+Returns the name of the tag for nodes with the type <cite>IKS_TAG</cite>.
+Returns an attribute’s name for nodes of type IKS_ATTRIBUTE.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun char* iks_cdata (iks* <cite>x</cite>);
+Returns a pointer to node’s character data if available, NULL otherwise.
+Returns an attribute’s value for nodes of type IKS_ATTRIBUTE.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun size_t iks_cdata_size (iks <a href="#id39"><span class="problematic" id="id40">*</span></a><cite>x</cite>);
+Returns the size of the node’s character data in bytes.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_has_children (iks <a href="#id41"><span class="problematic" id="id42">*</span></a><cite>x</cite>);
+Returns a non-zero value if node <cite>x</cite> has a child node.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_has_attribs (iks <a href="#id43"><span class="problematic" id="id44">*</span></a><cite>x</cite>);
+Returns a non-zero value if node <cite>x</cite> has attributes.
+&#64;end deftypefun</p>
+<p>Last group of the functions simplifies finding and accessing the content
+of a specific node:</p>
+<p>&#64;deftypefun iks* iks_find (iks <a href="#id45"><span class="problematic" id="id46">*</span></a><cite>x</cite>, const char <a href="#id47"><span class="problematic" id="id48">*</span></a><cite>name</cite>);
+Searches a IKS_TAG type of node with <cite>name</cite> as tag name in child
+nodes of <cite>x</cite>. Returns a pointer to the node if found, NULL otherwise.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun char* iks_find_cdata (iks* <cite>x</cite>, const char* <cite>name</cite>);
+Searches a IKS_TAG type of node with <cite>name</cite> as tag name in child
+nodes of <cite>x</cite>. Returns a pointer to the character data of the node’s
+first child node if found, NULL otherwise.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun char* iks_find_attrib (iks* <cite>x</cite>, const char* <cite>name</cite>);
+Searches an attribute with given name in attributes of the <cite>x</cite>.
+Returns a pointer to attribute value if found, NULL otherwise.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <a href="#id49"><span class="problematic" id="id50">*</span></a>} iks_find_with_attrib (iks <a href="#id51"><span class="problematic" id="id52">*</span></a><cite>x</cite>, const char <a href="#id53"><span class="problematic" id="id54">*</span></a><cite>tagname</cite>, const char <a href="#id55"><span class="problematic" id="id56">*</span></a><cite>attrname</cite>, const char <a href="#id57"><span class="problematic" id="id58">*</span></a><cite>value</cite>);
+Searches for a child tag of <cite>x</cite> which has an attribute with name
+<cite>attrname</cite> and value <cite>value</cite>. If <cite>tagname</cite> isn’t NULL,
+name of the tag must also match. Returns a pointer to the node if found,
+NULL otherwise.
+&#64;end deftypefun</p>
+<p>Here is an example which demonstrates accessing file names in a fictitious
+XML playlist file:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">&lt;playlist&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;mpg&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/download/matrix_rev_trailer.mpg&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;1:17&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;rm&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/anim/clementine_ep1.rm&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;22:00&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;item type=&#39;avi&#39;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;name&gt;/home/madcat/anim/futurama/ep101.avi&lt;/name&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;subtitle&gt;/home/madcat/subs/futurama/ep101.txt&lt;/subtitle&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;duration&gt;30:00&lt;/duration&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/item&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;repeat/&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;fullscreen/&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;noui/&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/playlist&gt;</span>
+</pre></div>
+</div>
+<p>and here is the code:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;iksemel.h&gt;
+
+int main (int argc, char *argv[])
+{
+    iks *x, *y;
+    int e;
+
+    if (argc &lt; 2) {
+        printf (&quot;usage: %s &lt;playlistfile&gt;&quot;, argv[0]);
+        return 0;
+    }
+    e = iks_load (argv[1], &amp;x);
+    if (e != IKS_OK) {
+      printf (&quot;parse error %d\\n&quot;, e);
+        return 1;
+    }
+    if (iks_find (x, &quot;repeat&quot;)) puts (&quot;repeat mode enabled&quot;);
+    y = iks_child (x);
+    while (y) {
+        if (iks_type (y) == IKS_TAG
+            &amp;&amp; strcmp (iks_name (y), &quot;item&quot;) == 0) {
+              printf (&quot;Filename: [%s]\\n&quot;, iks_find_cdata (y, &quot;name&quot;));
+        }
+        y = iks_next (y);
+     }
+    iks_delete (x);
+    return 0;
+}
+</pre></div>
+</div>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="converting-a-tree-to-an-xml-document">
+<span id="id59"></span><h3><span class="section-number">2.2.4. </span>Converting a Tree to an XML Document<a class="headerlink" href="#converting-a-tree-to-an-xml-document" title="Permalink to this headline">¶</a></h3>
+<p>There is a function for converting given XML tree into a null terminated string.</p>
+<p>&#64;deftypefun {char <em>} iks_string (ikstack</em> <cite>stack</cite>, iks* <cite>x</cite>);
+Converts given tree into a string. String is created inside the given object
+stack. Returns a pointer to the string, or NULL if there isn’t enough memory
+available.</p>
+<p>If <cite>stack</cite> is NULL, string is created inside an <cite>iks_malloc`ed buffer.
+You can free it later with `iks_free</cite> function.
+&#64;end deftypefun</p>
+<p>Here is an example which builds a tree and print it.</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+<span class="l l-Scalar l-Scalar-Plain">char *t;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">x = iks_new (&quot;test&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (iks_insert (x, &quot;a&quot;), &quot;1234&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert (x, &quot;br&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_insert_cdata (x, &quot;1234&quot;, 4);</span>
+<span class="l l-Scalar l-Scalar-Plain">t = iks_string (iks_stack (x), x);</span>
+<span class="l l-Scalar l-Scalar-Plain">puts (t);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_delete (x);</span>
+</pre></div>
+</div>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="parsing-a-document-into-a-tree">
+<span id="id60"></span><h3><span class="section-number">2.2.5. </span>Parsing a Document into a Tree<a class="headerlink" href="#parsing-a-document-into-a-tree" title="Permalink to this headline">¶</a></h3>
+<p>If you want to automatically convert an XML document into a tree, you can use
+iksemel’s DOM parser. It is created with following function:</p>
+<p>&#64;deftypefun iksparser* iks_dom_new (iks <a href="#id61"><span class="problematic" id="id62">**</span></a><cite>iksptr</cite>);
+Creates a DOM parser. A pointer to the created XML tree is put into the
+variable pointed by <cite>iksptr</cite>. Returns a pointer to the parser, or NULL
+is there isn’t enough memory.
+&#64;end deftypefun</p>
+<p>Usage is same as SAX parser. You feed the data with <cite>iks_parse</cite>, and if
+there isn’t an error, you can access to your tree from variable <cite>*iksptr</cite>.</p>
+<p>Here is a simple example:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+<span class="l l-Scalar l-Scalar-Plain">iksparser *p;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">p = iks_dom_new (&amp;x);</span>
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_parse (p, &quot;&lt;a&gt;bcd&lt;/a&gt;&quot;, 9, 1)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;parse error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">/* x is useable after that point */</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/* this will print &#39;bcd&#39; */</span>
+<span class="l l-Scalar l-Scalar-Plain">printf (&quot;%s\\n&quot;, iks_cdata (iks_child (x)));</span>
+</pre></div>
+</div>
+<p>If you know the size of the file ahead, or you have an approximate idea,
+you can tell this to the dom parser for choosing a better memory allocation
+strategy. Here is the function for this.</p>
+<p>&#64;deftypefun void iks_set_size_hint (iksparser <a href="#id63"><span class="problematic" id="id64">*</span></a><cite>prs</cite>, size_t <cite>approx_size</cite>);
+Parser <cite>prs</cite> must be a dom type parser. <cite>approx_size</cite> is the
+expected size of the xml document. Parser chooses its chunk size
+based on this information. Helps performance while processing big files.
+&#64;end deftypefun</p>
+<p>If you already have your XML document in memory, you can simply parse
+it with:</p>
+<p>&#64;deftypefun {iks <a href="#id65"><span class="problematic" id="id66">*</span></a>} iks_tree (const char <a href="#id67"><span class="problematic" id="id68">*</span></a><cite>xml_str</cite>, size_t <cite>len</cite>, int <a href="#id69"><span class="problematic" id="id70">*</span></a><cite>err</cite>);
+This function parses the buffer pointed by <cite>xml_str</cite>. If <cite>len</cite> is zero
+buffer is considered as a null terminated utf8 string. Returns the parsed tree,
+or NULL if there is an error. If <cite>err</cite> is not NULL, actual error code (returned
+by iks_parse) is put there.
+&#64;end deftypefun</p>
+<p>Most of the times you want to load your configuration (or similar) files directly
+into trees. iksemel provides two functions to greatly simplify this:</p>
+<p>&#64;deftypefun int iks_load (const char <a href="#id71"><span class="problematic" id="id72">*</span></a><cite>fname</cite>, iks <a href="#id73"><span class="problematic" id="id74">**</span></a><cite>xptr</cite>);
+Loads the XML file. Tree is placed into the variable pointed by <cite>xptr</cite>.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_save (const char <a href="#id75"><span class="problematic" id="id76">*</span></a><cite>fname</cite>, iks <a href="#id77"><span class="problematic" id="id78">*</span></a><cite>x</cite>);
+Converts tree <cite>x</cite> into a string and saves to the file.
+&#64;end deftypefun</p>
+<p>Both functions return same error codes as <cite>iks_parse</cite>. Some additional
+error codes are defined for indicating file problems. They are:</p>
+<dl class="simple">
+<dt><em>IKS_FILE_NOFILE</em></dt><dd><p>A file with the given name doesn’t exist.</p>
+</dd>
+<dt><em>IKS_FILE_NOACCESS</em></dt><dd><p>Cannot open file. Possibly a permission problem.</p>
+</dd>
+<dt><em>IKS_FILE_RWERR</em></dt><dd><p>Read or write operation failed.</p>
+</dd>
+</dl>
+<p>Here is a simple example which parses a file and saves it into another:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iks *x;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_load (&quot;file1.xml&quot;, &amp;x)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;loading error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">if (IKS_OK != iks_save (&quot;file2.xml&quot;, x)) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">puts (&quot;saving error&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</pre></div>
+</div>
+<p>&#64;comment ============================================================</p>
+</div>
+</div>
+<div class="section" id="xml-streams">
+<span id="id79"></span><h2><span class="section-number">2.3. </span>XML Streams<a class="headerlink" href="#xml-streams" title="Permalink to this headline">¶</a></h2>
+<p>XML streams function as containers for any XML chunks sent asynchronously
+between network endpoints. They are used for asyncronously exchanging
+relatively small payload of structured information between entities.</p>
+<p>A stream is initiated by one of hosts connecting to the other, and sending a
+&lt;stream:stream&gt; tag. Receiving entity replies with a second XML stream
+back to the initiating entity within the same connection. Each unit of
+information is send as a direct child tag of the &lt;stream:stream&gt; tag.
+Stream is closed with &lt;/stream:stream&gt;.</p>
+<p>XML streams use a subset of XML. Specifically they should not contain
+processing instructions, non-predefined entities, comments, or DTDs.</p>
+<p>Jabber protocol uses XML streams for exchanging messages, presence
+information, and other information like authorization, search, time and
+version queries, protocol extensions.</p>
+<p>iksemel provides you a stream parser, which automatically handles connection
+to the server, and calls your hook function with incoming information
+parsed and converted to an XML tree.</p>
+<p>You can create such a parser with:</p>
+<p>&#64;deftypefun iksparser* iks_stream_new (char* <cite>name_space</cite>, void* <cite>user_data</cite>, iksStreamHook* <cite>streamHook</cite>);
+Allocates and initalizes a stream parser. <cite>name_space</cite> indicates the
+stream type, jabber clients use “jabber:client” namespace. <cite>user_data</cite>
+is passed directly to your hook function.
+&#64;end deftypefun</p>
+<dl id="index-4">
+<dt>Typedef iksStreamHook</dt><dd><p>int iksStreamHook (void* <cite>user_data</cite>, int <cite>type</cite>, iks* <cite>node</cite>);</p>
+<p>Depending on the value of the <cite>type</cite>, <cite>node</cite> contains:</p>
+</dd>
+<dt><em>IKS_NODE_START</em></dt><dd><p>Got the &lt;stream:stream&gt; tag, namespace, stream id and other information
+is contained in the <cite>node</cite>.</p>
+</dd>
+<dt><em>IKS_NODE_NORMAL</em></dt><dd><p>A first level child of the &lt;stream:stream&gt; tag is received. <cite>node</cite> contains
+the parsed tag. If you are connected to a jabber server, you can get &lt;message&gt;,
+&lt;presence&gt;, or &lt;iq&gt; tags.</p>
+</dd>
+<dt><em>IKS_NODE_ERROR</em></dt><dd><p>Got a &lt;stream:error&gt; tag, details can be accessed from <cite>node</cite>.</p>
+</dd>
+<dt><em>IKS_NODE_STOP</em></dt><dd><blockquote>
+<div><p>&lt;/stream:stream&gt; tag is received or connection is closed, <cite>node</cite> is <cite>NULL</cite>.</p>
+</div></blockquote>
+<p>Freeing the node with <cite>iks_delete</cite> is up to you.</p>
+</dd>
+</dl>
+<p>You can manually feed this parser with <cite>iks_parse</cite> function, but using
+iksemel’s connection facilities is easier for most of the cases.</p>
+<p>This functions return <cite>IKS_OK</cite> for success. Error codes of <cite>iks_parse</cite>
+are used in same manner. Following additional codes are defined for
+network related problems:</p>
+<dl class="simple">
+<dt><em>IKS_NET_NODNS</em></dt><dd><p>Hostname lookup failed. Possible reasons: hostname is incorrect,
+you are not online, your dns server isn’t accessible.</p>
+</dd>
+<dt><em>IKS_NET_NOSOCK</em></dt><dd><p>Socket cannot created.</p>
+</dd>
+<dt><em>IKS_NET_NOCONN</em></dt><dd><p>Connection attemp failed. Possible reasons: host is not an XML stream
+server, port number is wrong, server is busy or closed for the moment.</p>
+</dd>
+<dt><em>IKS_NET_RWERR</em></dt><dd><p><cite>send</cite> or <cite>recv</cite> call is failed when attempting to exchange
+the data with the server. You should close the connection with <cite>iks_disconnect</cite>
+after getting this error from data transfer functions.</p>
+</dd>
+</dl>
+<p>&#64;deftypefun int iks_connect_tcp (iksparser <a href="#id80"><span class="problematic" id="id81">*</span></a><cite>prs</cite>, const char <a href="#id82"><span class="problematic" id="id83">*</span></a><cite>server</cite>, int <cite>port</cite>);
+This function connects the parser to a server and sends stream header for you.
+<cite>server</cite> is the host name of the server and <cite>port</cite> is the tcp port
+number which server is listening to. You can use <cite>IKS_JABBER_PORT</cite>
+macro for the default jabber client port (5222).
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_connect_fd (iksparser <a href="#id84"><span class="problematic" id="id85">*</span></a><cite>prs</cite>, int <cite>fd</cite>);
+Attaches parser to an already opened connection. <cite>fd</cite> is the socket
+descriptor. Note that <cite>iks_disconnect</cite> doesn’t close the socket
+for this kind of connection, opening and closing of the socket is up to your
+application. Stream header is not sent automatically. You can use
+<cite>iks_send_header</cite> function for sending it.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_disconnect (iksparser <a href="#id86"><span class="problematic" id="id87">*</span></a><cite>prs</cite>);
+Closes connection to the server, and frees connection resources.
+&#64;end deftypefun</p>
+<p>After successfully connecting to a server, you can use following functions
+for exchanging information with server.</p>
+<p>&#64;deftypefun int iks_recv (iksparser* <cite>prs</cite>, int <cite>timeout</cite>);
+If <cite>timeout</cite> is <cite>-1</cite>, waits until some data arrives from server,
+and process the data. Your stream hook can be called if a complete
+chunk is arrived.</p>
+<p>If <cite>timeout</cite> is a positive integer, <cite>iks_recv</cite> returns if no data
+arrives for <cite>timeout</cite> seconds.</p>
+<p>If <cite>timeout</cite> is zero, <cite>iks_recv</cite> checks if there is any data
+waiting at the network buffer, and returns without waiting for data.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_fd (iksparser* <cite>prs</cite>);
+Returns the file descriptor of the connected socket. You can use this in
+your <cite>select</cite> function or some other input loop to act whenever
+some data from the server arrives. This value of only valid between
+a successful <cite>iks_connect_tcp</cite> and <cite>iks_disconnect</cite>.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_send (iksparser* <cite>prs</cite>, iks* <cite>x</cite>);
+Converts the tree given in <cite>x</cite> to a string, and sends to the server.
+String is created inside the object stack of <cite>x</cite>.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_send_raw (iksparser* <cite>prs</cite>, char* <cite>xmlstr</cite>);
+Sends the string given in <cite>xmlstr</cite> to the server.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_send_header (iksparser <a href="#id88"><span class="problematic" id="id89">*</span></a><cite>prs</cite>, char <a href="#id90"><span class="problematic" id="id91">*</span></a><cite>to</cite>);
+Sends the stream header. <cite>to</cite> is the name of the server.
+Normally <cite>iks_connect_tcp</cite> function calls this for you. This
+is only useful if you are using <cite>iks_connect_fd</cite>.
+&#64;end deftypefun</p>
+<p>Sometimes it is useful to log incoming and outgoing data to your parser
+for debugging your applications. iksemel provides a logging facility for you.</p>
+<p>&#64;deftypefun void iks_set_log_hook (iksparser* <cite>prs</cite>, iksLogHook* <cite>logHook</cite>);
+Sets the log function for your stream parser. You can’t use this function
+on any other type of parser.
+&#64;end deftypefun</p>
+<dl id="index-5">
+<dt>Typedef iksLogHook</dt><dd><p>void iksLogHook (void* <cite>user_data</cite>, const char* <cite>data</cite>, size_t <cite>size</cite>, int <cite>is_incoming</cite>);</p>
+<p><cite>user_data</cite> is same value which you give with <cite>iks_stream_new</cite>.
+<cite>data</cite> is <cite>size</cite> bytes of data. Be very careful that this data may be
+coming from other side of the connection and can contain malicius bytes. It isn’t
+checked by iksemel yet, so you should check it yourself before displaying or
+passing to other systems in your application or computer. If <cite>is_incoming</cite>
+is a non-zero value, data is incoming from server, otherwise it is outgoing to the
+server.</p>
+</dd>
+</dl>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="writing-a-jabber-client">
+<span id="id92"></span><h2><span class="section-number">2.4. </span>Writing a Jabber Client<a class="headerlink" href="#writing-a-jabber-client" title="Permalink to this headline">¶</a></h2>
+<p>&#64;ifinfo
+&#64;end ifinfo</p>
+<p>&#64;comment ============================================================</p>
+<div class="section" id="security">
+<span id="id93"></span><h3><span class="section-number">2.4.1. </span>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>iksemel supports TLS protocol for encrypted communication and SASL
+protocol for authentication. TLS is handled by gnutls library.</p>
+<p>&#64;deftypefun int iks_has_tls (void);
+If iksemel is compiled with gnutls library, this function returns a non-zero
+value indicating you can try encrypted connection with the server.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_start_tls (iksparser* <cite>prs</cite>);
+Starts a TLS handshake over already connected parser. Returns IKS_OK or
+one of the <a href="#id208"><span class="problematic" id="id209">IKS_NET_</span></a> errors. If handshake succeeds you’ll get another
+stream header from server.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_is_secure (iksparser* <cite>prs</cite>);
+Returns a non-zero value if a secure connection is fully established
+between server.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun int iks_start_sasl (iksparser* <cite>prs</cite>, enum ikssasltype <cite>type</cite>, char* <cite>username</cite>, char* <cite>pass</cite>);
+Starts SASL operation.
+&#64;end deftypefun</p>
+<p>See tools/iksroster.c for a good example.</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="packets">
+<span id="id94"></span><h3><span class="section-number">2.4.2. </span>Packets<a class="headerlink" href="#packets" title="Permalink to this headline">¶</a></h3>
+<p>iksemel can parse a jabber XML node and provide you a public packet
+structure which contains information like node type and subtype, id,
+namespace, sender’s jabber id, etc.</p>
+<p>This handles a lot of node parsing for you. Packets are also used in
+the packet filter subsystem.</p>
+<p>&#64;deftypefun {ikspak <a href="#id95"><span class="problematic" id="id96">*</span></a>} iks_packet (iks <a href="#id97"><span class="problematic" id="id98">*</span></a><cite>x</cite>);
+Takes a node from stream and extracts information from it to a packet structure.
+Structure is allocated inside the node’s object stack.
+&#64;end deftypefun</p>
+<p>&#64;tindex ikspak
+<cite>ikspak</cite> structure has following fields:</p>
+<dl>
+<dt><em>iks *x;</em></dt><dd><p>This is a pointer to the node.</p>
+</dd>
+<dt><em>iksid *from;</em></dt><dd><p>Sender’s jabber id in parsed form. See below for <cite>iksid</cite> structure.</p>
+</dd>
+<dt><em>iks *query;</em></dt><dd><p>A pointer to the &lt;query&gt; tag for IQ nodes.</p>
+</dd>
+<dt><em>char *ns;</em></dt><dd><p>Namespace of the content for IQ nodes.</p>
+</dd>
+<dt><em>char *id;</em></dt><dd><p>ID of the node.</p>
+</dd>
+<dt><em>enum ikspaktype type;</em></dt><dd><p>Type of the node. Possible types are:</p>
+</dd>
+<dt><em>IKS_PAK_NONE</em></dt><dd><p>Unknown node.</p>
+</dd>
+<dt><em>IKS_PAK_MESSAGE</em></dt><dd><p>Message node.</p>
+</dd>
+<dt><em>IKS_PAK_PRESENCE</em></dt><dd><p>Presence node with presence publishing operation.</p>
+</dd>
+<dt><em>IKS_PAK_S10N</em></dt><dd><p>Presence node with subscription operation.</p>
+</dd>
+<dt><em>IKS_PAK_IQ</em></dt><dd><p>IQ node.</p>
+</dd>
+<dt><em>enum iksubtype subtype;</em></dt><dd><p>Sub type of the node. Sub types for message nodes:</p>
+</dd>
+<dt><em>IKS_TYPE_NONE</em></dt><dd><p>A normal message.</p>
+</dd>
+<dt><em>IKS_TYPE_CHAT</em></dt><dd><p>Private chat message.</p>
+</dd>
+<dt><em>IKS_TYPE_GROUPCHAT</em></dt><dd><p>Multi user chat message.</p>
+</dd>
+<dt><em>IKS_TYPE_HEADLINE</em></dt><dd><p>Message from a news source.</p>
+</dd>
+<dt><em>IKS_TYPE_ERROR</em></dt><dd><blockquote>
+<div><p>Message error.</p>
+</div></blockquote>
+<p>Sub types for IQ nodes:</p>
+</dd>
+<dt><em>IKS_TYPE_GET</em></dt><dd><p>Asks for some information.</p>
+</dd>
+<dt><em>IKS_TYPE_SET</em></dt><dd><p>Request for changing information.</p>
+</dd>
+<dt><em>IKS_TYPE_RESULT</em></dt><dd><p>Reply to get and set requests.</p>
+</dd>
+<dt><em>IKS_TYPE_ERROR</em></dt><dd><blockquote>
+<div><p>IQ error.</p>
+</div></blockquote>
+<p>Sub types for subscription nodes:</p>
+</dd>
+<dt><em>IKS_TYPE_SUBSCRIBE,</em></dt><dd><p>Asks for subscribing to the presence.</p>
+</dd>
+<dt><em>IKS_TYPE_SUBSCRIBED,</em></dt><dd><p>Grants subscription.</p>
+</dd>
+<dt><em>IKS_TYPE_UNSUBSCRIBE,</em></dt><dd><p>Asks for unsubscribing to the presence.</p>
+</dd>
+<dt><em>IKS_TYPE_UNSUBSCRIBED,</em></dt><dd><p>Cancels subscription.</p>
+</dd>
+<dt><em>IKS_TYPE_ERROR</em></dt><dd><blockquote>
+<div><p>Presence error.</p>
+</div></blockquote>
+<p>Sub types for presence nodes:</p>
+</dd>
+<dt><em>IKS_TYPE_PROBE,</em></dt><dd><p>Asks presence status.</p>
+</dd>
+<dt><em>IKS_TYPE_AVAILABLE,</em></dt><dd><p>Publishes entity as available. More information can be found in <cite>show</cite> field.</p>
+</dd>
+<dt><em>IKS_TYPE_UNAVAILABLE</em></dt><dd><p>Publishes entity as unavailable. More information can be found in <cite>show</cite> field.</p>
+</dd>
+<dt><em>enum ikshowtype show;</em></dt><dd><p>Presence state for the presence nodes.</p>
+</dd>
+<dt><em>IKS_SHOW_UNAVAILABLE</em></dt><dd><p>Entity is unavailable.</p>
+</dd>
+<dt><em>IKS_SHOW_AVAILABLE</em></dt><dd><p>Entity is available.</p>
+</dd>
+<dt><em>IKS_SHOW_CHAT</em></dt><dd><p>Entity is free for chat.</p>
+</dd>
+<dt><em>IKS_SHOW_AWAY</em></dt><dd><p>Entity is away for a short time.</p>
+</dd>
+<dt><em>IKS_SHOW_XA</em></dt><dd><p>Entity is away for a long time.</p>
+</dd>
+<dt><em>IKS_SHOW_DND</em></dt><dd><p>Entity doesn’t want to be disturbed.</p>
+</dd>
+</dl>
+<p>iksemel has two functions to parse and compare jabber IDs.</p>
+<p>&#64;deftypefun {iksid <a href="#id99"><span class="problematic" id="id100">*</span></a>} iks_id_new (ikstack <a href="#id101"><span class="problematic" id="id102">*</span></a><cite>s</cite>, const char <a href="#id103"><span class="problematic" id="id104">*</span></a><cite>jid</cite>);
+Parses a jabber id into its parts. <cite>iksid</cite> structure is created inside
+the <cite>s</cite> object stack.
+&#64;end deftypefun</p>
+<p>&#64;tindex iksid
+<cite>iksid</cite> structure has following fields:</p>
+<dl class="simple">
+<dt><em>char *user;</em></dt><dd><p>User name.</p>
+</dd>
+<dt><em>char *server;</em></dt><dd><p>Server name.</p>
+</dd>
+<dt><em>char *resource;</em></dt><dd><p>Resource.</p>
+</dd>
+<dt><em>char *partial;</em></dt><dd><p>User name and server name.</p>
+</dd>
+<dt><em>char *full;</em></dt><dd><p>User name, server name and resource.</p>
+</dd>
+</dl>
+<p>You can access this fields and read their values. Comparing two parsed jabber
+ids can be done with:</p>
+<p>&#64;deftypefun int iks_id_cmp (iksid <a href="#id105"><span class="problematic" id="id106">*</span></a><cite>a</cite>, iksid <a href="#id107"><span class="problematic" id="id108">*</span></a><cite>b</cite>, int <cite>parts</cite>);
+Compares <cite>parts</cite> of <cite>a</cite> and <cite>b</cite>. Part values are:</p>
+<p><em>IKS_ID_USER</em></p>
+<p><em>IKS_ID_SERVER</em></p>
+<p><em>IKS_ID_RESOURCE</em></p>
+<p>&#64;sp 1
+You can combine this values with <cite>or</cite> operator. Some common combinations
+are predefined for you:</p>
+<dl class="simple">
+<dt><em>IKS_ID_PARTIAL</em></dt><dd><p><cite>IKS_ID_USER | IKS_ID_SERVER</cite></p>
+</dd>
+<dt><em>IKS_ID_FULL</em></dt><dd><p><cite>IKS_ID_USER | IKS_ID_SERVER | IKS_ID_RESOURCE</cite></p>
+</dd>
+</dl>
+<p>Return value is <cite>0</cite> for equality. If entities are not equal a combination of
+part values showing different parts is returned.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="packet-filter">
+<span id="id109"></span><h3><span class="section-number">2.4.3. </span>Packet Filter<a class="headerlink" href="#packet-filter" title="Permalink to this headline">¶</a></h3>
+<p>Packet filter handles routing incoming packets to related functions.</p>
+<p>&#64;tindex iksfilter
+&#64;deftypefun {iksfilter <a href="#id110"><span class="problematic" id="id111">*</span></a>} iks_filter_new (void);
+Creates a new packet filter.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_filter_packet (iksfilter <a href="#id112"><span class="problematic" id="id113">*</span></a><cite>f</cite>, ikspak <a href="#id114"><span class="problematic" id="id115">*</span></a><cite>pak</cite>);
+Feeds the filter with given packet. Packet is compared to registered rules and
+hook functions of the matching rules are called in most matched to least
+matched order.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_filter_delete (iksfilter <a href="#id116"><span class="problematic" id="id117">*</span></a><cite>f</cite>);
+Frees filter and rules.
+&#64;end deftypefun</p>
+<p>Rules are created with following function:</p>
+<p>&#64;tindex iksrule
+&#64;deftypefun {iksrule <a href="#id118"><span class="problematic" id="id119">*</span></a>} iks_filter_add_rule (iksfilter <a href="#id120"><span class="problematic" id="id121">*</span></a><cite>f</cite>, iksFilterHook <a href="#id122"><span class="problematic" id="id123">*</span></a><cite>filterHook</cite>, void <a href="#id124"><span class="problematic" id="id125">*</span></a><cite>user_data</cite>, …);
+Adds a rule to the filter <cite>f</cite>. <cite>user_data</cite> is passed directly to your
+hook function <cite>filterHook</cite>.</p>
+<p>A rule consist of one or more type and value pairs. Possible types:</p>
+<dl class="simple">
+<dt><em>IKS_RULE_ID</em></dt><dd><p>Compares <cite>char *</cite> value to packet ids.</p>
+</dd>
+<dt><em>IKS_RULE_FROM</em></dt><dd><p>Compares <cite>char *</cite> value to packet senders.</p>
+</dd>
+<dt><em>IKS_RULE_FROM_PARTIAL</em></dt><dd><p>Compares <cite>char *</cite> value to packet sender. Ignores resource part of jabber id.</p>
+</dd>
+<dt><em>IKS_RULE_NS</em></dt><dd><p>Compares <cite>char *</cite> value to namespace of iq packets.</p>
+</dd>
+<dt><em>IKS_RULE_TYPE</em></dt><dd><p>Compares <cite>int</cite> value to packet types.</p>
+</dd>
+<dt><em>IKS_RULE_SUBTYPE</em></dt><dd><p>Compares <cite>int</cite> value to packet sub types.</p>
+</dd>
+<dt><em>IKS_RULE_DONE</em></dt><dd><p>Terminates the rule pairs.</p>
+</dd>
+</dl>
+<p>&#64;end deftypefun</p>
+<p>Here is an example which creates a filter and adds three rules:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">iksfilter *f;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">f = iks_filter_new ();</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_msg, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_MESSAGE,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_auth_result, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_IQ,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_SUBTYPE, IKS_TYPE_RESULT,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_ID, &quot;auth&quot;,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+<span class="l l-Scalar l-Scalar-Plain">iks_filter_add_rule (f, on_roster_push, NULL,</span>
+                     <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_TYPE, IKS_PAK_IQ,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_SUBTYPE, IKS_TYPE_SET,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_NS, &quot;jabber:iq:roster&quot;,</span>
+                   <span class="l l-Scalar l-Scalar-Plain">IKS_RULE_DONE);</span>
+</pre></div>
+</div>
+<dl id="index-6">
+<dt>Typedef iksFilterHook</dt><dd><p>int iksFilterHook (void <a href="#id126"><span class="problematic" id="id127">*</span></a>user_data, ikspak <a href="#id128"><span class="problematic" id="id129">*</span></a>pak);</p>
+<p>Your hook is called with your <cite>user_data</cite> and matching packet <cite>pak</cite>.
+You can return two different values from your hook:</p>
+</dd>
+<dt><em>IKS_FILTER_PASS</em></dt><dd><p>Packet is forwarded to least matching rules.</p>
+</dd>
+<dt><em>IKS_FILTER_EAT</em></dt><dd><p>Filtering process for the packet ends.</p>
+</dd>
+</dl>
+<p>You can remove the rules with following functions:</p>
+<p>&#64;deftypefun void iks_filter_remove_rule (iksfilter <a href="#id130"><span class="problematic" id="id131">*</span></a><cite>f</cite>, iksrule <a href="#id132"><span class="problematic" id="id133">*</span></a><cite>rule</cite>);
+Removes the rule from filter.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_filter_remove_hook (iksfilter <a href="#id134"><span class="problematic" id="id135">*</span></a><cite>f</cite>, iksFilterHook <a href="#id136"><span class="problematic" id="id137">*</span></a><cite>filterHook</cite>);
+Remove the rules using <cite>filterHook</cite> function from filter.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="creating-common-packets">
+<span id="id138"></span><h3><span class="section-number">2.4.4. </span>Creating Common Packets<a class="headerlink" href="#creating-common-packets" title="Permalink to this headline">¶</a></h3>
+<p>A usual jabber network traffic contains many similar XML constructs. iksemel
+provides several utility functions for creating them. They all generate an XML
+tree, so you can add or modify some parts of the tree, and send to server then.</p>
+<p>&#64;deftypefun {iks <a href="#id139"><span class="problematic" id="id140">*</span></a>} iks_make_auth (iksid <a href="#id141"><span class="problematic" id="id142">*</span></a><cite>id</cite>, const char <a href="#id143"><span class="problematic" id="id144">*</span></a><cite>pass</cite>, const char <a href="#id145"><span class="problematic" id="id146">*</span></a><cite>sid</cite>);
+Creates an authorization packet. <cite>id</cite> is your parsed jabber id, and <cite>pass</cite>
+is your password.</p>
+<p>If stream id <cite>sid</cite> isn’t NULL, SHA1 authentication is used, otherwise password
+is attached in plain text. You can learn stream id from <cite>IKS_STREAM_START</cite>
+packet in your stream hook like this:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">char *sid;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">if (type == IKS_STREAM_START) {</span>
+    <span class="l l-Scalar l-Scalar-Plain">sid = iks_find_attrib (node, &quot;id&quot;);</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</pre></div>
+</div>
+<p>&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <a href="#id147"><span class="problematic" id="id148">*</span></a>} iks_make_msg (enum iksubtype <cite>type</cite>, const char <a href="#id149"><span class="problematic" id="id150">*</span></a><cite>to</cite>, const char <a href="#id151"><span class="problematic" id="id152">*</span></a><cite>body</cite>);
+Creates a message packet. <cite>type</cite> is the message type, <cite>to</cite> is jabber id
+of the recipient, <cite>body</cite> is the message.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <a href="#id153"><span class="problematic" id="id154">*</span></a>} iks_make_s10n (enum iksubtype <cite>type</cite>, const char <a href="#id155"><span class="problematic" id="id156">*</span></a><cite>to</cite>, const char <a href="#id157"><span class="problematic" id="id158">*</span></a><cite>msg</cite>);
+Creates a presence packet for subscription operations. <cite>type</cite> is operation,
+<cite>to</cite> is jabber id of the recipient, <cite>msg</cite> is a small message for
+introducing yourself, or explaning the reason of why you are subscribing or
+unsubscribing.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <a href="#id159"><span class="problematic" id="id160">*</span></a>} iks_make_pres (enum ikshowtype <cite>show</cite>, const char <a href="#id161"><span class="problematic" id="id162">*</span></a><cite>status</cite>);
+Creates a presence packet for publishing your presence. <cite>show</cite> is your
+presence state and <cite>status</cite> is a message explaining why you are not
+available at the moment, or what you are doing now.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun {iks <a href="#id163"><span class="problematic" id="id164">*</span></a>} iks_make_iq (enum iksubtype <cite>type</cite>, const char <a href="#id165"><span class="problematic" id="id166">*</span></a><cite>xmlns</cite>);
+Creates an IQ packet. <cite>type</cite> is operation type and <cite>xmlns</cite> is the
+namespace of the content. You usually have to add real content to the &lt;query&gt;
+tag before sending this packet.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+</div>
+<div class="section" id="utility-functions">
+<span id="id167"></span><h2><span class="section-number">2.5. </span>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="memory-utilities">
+<h3><span class="section-number">2.5.1. </span>Memory Utilities<a class="headerlink" href="#memory-utilities" title="Permalink to this headline">¶</a></h3>
+<p>&#64;deftypefun {void <a href="#id168"><span class="problematic" id="id169">*</span></a>} iks_malloc (size_t <cite>size</cite>);
+&#64;end deftypefun
+&#64;deftypefun void iks_free (void <a href="#id170"><span class="problematic" id="id171">*</span></a><cite>ptr</cite>);
+&#64;end deftypefun</p>
+<p>These are wrappers around ANSI malloc and free functions used by the
+iksemel library itself. You can free the output of iks_string (only if you
+passed it a NULL stack) with iks_free for example. That is important
+if you are using a malloc debugger in your application but not in iksemel
+or vice versa.</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="string-utilities">
+<h3><span class="section-number">2.5.2. </span>String Utilities<a class="headerlink" href="#string-utilities" title="Permalink to this headline">¶</a></h3>
+<p>&#64;deftypefun {char <a href="#id172"><span class="problematic" id="id173">*</span></a>} iks_strdup (const char <a href="#id174"><span class="problematic" id="id175">*</span></a><cite>src</cite>);
+&#64;end deftypefun
+&#64;deftypefun int iks_strcmp (const char <a href="#id176"><span class="problematic" id="id177">*</span></a><cite>a</cite>, const char <a href="#id178"><span class="problematic" id="id179">*</span></a><cite>b</cite>);
+&#64;end deftypefun
+&#64;deftypefun int iks_strcasecmp (const char <a href="#id180"><span class="problematic" id="id181">*</span></a><cite>a</cite>, const char <a href="#id182"><span class="problematic" id="id183">*</span></a><cite>b</cite>);
+&#64;end deftypefun
+&#64;deftypefun int iks_strncmp (const char <a href="#id184"><span class="problematic" id="id185">*</span></a><cite>a</cite>, const char <a href="#id186"><span class="problematic" id="id187">*</span></a><cite>b</cite>, size_t <cite>n</cite>);
+&#64;end deftypefun
+&#64;deftypefun int iks_strncasecmp (const char <a href="#id188"><span class="problematic" id="id189">*</span></a><cite>a</cite>, const char <a href="#id190"><span class="problematic" id="id191">*</span></a><cite>b</cite>, size_t <cite>n</cite>);
+&#64;end deftypefun
+&#64;deftypefun size_t iks_strlen (const char <a href="#id192"><span class="problematic" id="id193">*</span></a><cite>src</cite>);
+&#64;end deftypefun</p>
+<p>These functions work exactly like their ANSI equivalents except that they allow
+NULL values for string pointers. If <cite>src</cite> is NULL, iks_strdup and iks_strlen
+returns zero. If <cite>a</cite> or <cite>b</cite> is NULL in string comparisation functions
+they return -1.</p>
+<p>Their usefulness comes from the fact that they can chained with DOM traversing
+functions like this:</p>
+<div class="highlight-YAML+Jinja notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">if (iks_strcmp (iks_find_attrib (x, &quot;id&quot;), &quot;x1&quot;) == 0) count++;</span>
+</pre></div>
+</div>
+<p>That example works even x doesn’t have an ‘id’ attribute and iks_find_attrib
+returns NULL. So you don’t need to use temporary variables in such
+situations.</p>
+<p>&#64;comment ============================================================</p>
+</div>
+<div class="section" id="sha1-hash">
+<h3><span class="section-number">2.5.3. </span>SHA1 Hash<a class="headerlink" href="#sha1-hash" title="Permalink to this headline">¶</a></h3>
+<p>Secure Hash Algorithm (SHA1) is used in the Jabber authentication
+protocol for encoding your password when sending to the server.
+This is normally handled by iks_make_auth() function, but if you
+want to handle it manually, or if you need a good hash function
+for other purproses you can use these functions.</p>
+<p>&#64;deftypefun iksha* iks_sha_new (void);
+Allocates a structure for keeping calculation values and the state.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_sha_reset (iksha <a href="#id194"><span class="problematic" id="id195">*</span></a><cite>sha</cite>);
+Resets the state of the calculation.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_sha_hash (iksha <a href="#id196"><span class="problematic" id="id197">*</span></a><cite>sha</cite>, const unsigned char <a href="#id198"><span class="problematic" id="id199">*</span></a><cite>data</cite>, int <cite>len</cite>, int <cite>finish</cite>);
+Calculates the hash value of the given data. If <cite>finish</cite> is non
+zero, applies the last step of the calculation.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_sha_print (iksha <a href="#id200"><span class="problematic" id="id201">*</span></a><cite>sha</cite>, char <a href="#id202"><span class="problematic" id="id203">*</span></a><cite>hash</cite>);
+Prints the result of a finished calculation into the buffer pointed by <cite>hash</cite>
+in hexadecimal string form. Buffer must be at least 40 bytes long. String
+is not null terminated.
+&#64;end deftypefun</p>
+<p>&#64;deftypefun void iks_sha (const char <a href="#id204"><span class="problematic" id="id205">*</span></a><cite>data</cite>, char <a href="#id206"><span class="problematic" id="id207">*</span></a><cite>hash</cite>);
+Calculates the hash value of <cite>data</cite> and prints into <cite>hash</cite>.
+This is a helper function for simple hash calculations. It calls
+other functions for the actual work.
+&#64;end deftypefun</p>
+<p>&#64;comment ============================================================</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Development.html" class="btn btn-neutral float-right" title="3. Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral float-left" title="1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016-2020 Zaryob
+      <span class="lastupdated">
+        Last updated on Jun 13, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
