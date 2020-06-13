@@ -17,7 +17,7 @@ import os
 
 # General substitutions.
 project = 'Iksemel'
-copyright = "2001-2003 G@"urer @"Ozen"
+copyright = "2001-2003 G@'urer @'Ozen"
 
 # The default replacements for |version| and |release|, also used in various
 # other places throughout the built documents.
