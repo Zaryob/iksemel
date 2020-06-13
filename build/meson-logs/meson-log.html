@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; Iksemel Documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Iksemel Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Inary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Tutorials.html">2. Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Development.html">3. Development</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Inary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>Build started at 2020-06-13T16:11:15.447403
+Main binary: /usr/bin/python3.7
+Build Options: -Dopenssl=enabled -Dgnutls=disabled -Dwith_tools=true -Dwith_python=true
+Python system: Linux
+The Meson build system
+Version: 0.52.1
+Source dir: /home/zaryob/Development/sicis/iksemel
+Build dir: /home/zaryob/Development/sicis/iksemel/build
+Build type: native build
+Project name: iksemel
+Project version: undefined
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/zaryob/Development/sicis/iksemel/build/meson-private/sanitycheckc.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:</p>
+<p>C linker for the build machine: GNU ld.bfd 2.33.1
+No CFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc /home/zaryob/Development/sicis/iksemel/build/meson-private/sanitycheckc.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/sanitycheckc.exe -pipe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:</p>
+<p>C linker for the host machine: GNU ld.bfd 2.33.1
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp36c36dod
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp36c36dod/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp36c36dod/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -Werror=implicit-function-declaration</p>
+<dl class="simple">
+<dt>Code:</dt><dd><p>int i;</p>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Compiler for C supports arguments -Werror=implicit-function-declaration: YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp2_qpzhtq
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp2_qpzhtq/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“dlfcn.h”)</dt><dd><p>#error “Header ‘dlfcn.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;dlfcn.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “dlfcn.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpbub5u5wf
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpbub5u5wf/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“errno.h”)</dt><dd><p>#error “Header ‘errno.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;errno.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “errno.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpm2n30ng3
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpm2n30ng3/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“inttypes.h”)</dt><dd><p>#error “Header ‘inttypes.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;inttypes.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “inttypes.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmplhhx1j50
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmplhhx1j50/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“memory.h”)</dt><dd><p>#error “Header ‘memory.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;memory.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “memory.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpxewi4bdq
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpxewi4bdq/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“stdint.h”)</dt><dd><p>#error “Header ‘stdint.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;stdint.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “stdint.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp8ozvxbm8
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp8ozvxbm8/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“stdlib.h”)</dt><dd><p>#error “Header ‘stdlib.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;stdlib.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “stdlib.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpxx2eu4ax
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpxx2eu4ax/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“strings.h”)</dt><dd><p>#error “Header ‘strings.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;strings.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “strings.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmprcv4_o7t
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmprcv4_o7t/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“string.h”)</dt><dd><p>#error “Header ‘string.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;string.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “string.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpim3yfeu0
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpim3yfeu0/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“sys/stat.h”)</dt><dd><p>#error “Header ‘sys/stat.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;sys/stat.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “sys/stat.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpz63gf3y2
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpz63gf3y2/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“sys/types.h”)</dt><dd><p>#error “Header ‘sys/types.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;sys/types.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “sys/types.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp2wkmzl5u
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp2wkmzl5u/testfile.c -pipe -E -P -D_FILE_OFFSET_BITS=64 -P -O0</p>
+<p>Code:</p>
+<blockquote>
+<div><dl>
+<dt>#ifdef __has_include</dt><dd><dl class="simple">
+<dt>#if !__has_include(“unistd.h”)</dt><dd><p>#error “Header ‘unistd.h’ could not be found”</p>
+</dd>
+</dl>
+<p>#endif</p>
+</dd>
+<dt>#else</dt><dd><p>#include &lt;unistd.h&gt;</p>
+</dd>
+</dl>
+<p>#endif</p>
+</div></blockquote>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Has header “unistd.h” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmph09pwnv3
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmph09pwnv3/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmph09pwnv3/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0</p>
+<dl class="simple">
+<dt>Code:</dt><dd><p>#include&lt;netdb.h&gt;</p>
+</dd>
+</dl>
+<p>#include &lt;limits.h&gt;</p>
+<blockquote>
+<div><p>#if defined __stub_getaddrinfo || defined __stub___getaddrinfo
+fail fail fail this function is not going to work
+#endif</p>
+</div></blockquote>
+<dl>
+<dt>int main() {</dt><dd><blockquote>
+<div><p>void <em>a = (void</em>) &amp;getaddrinfo;
+long b = (long) a;
+return (int) b;</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Checking for function “getaddrinfo” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp_pclwbg6
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp_pclwbg6/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmp_pclwbg6/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0</p>
+<dl class="simple">
+<dt>Code:</dt><dd><p>#include&lt;getopt.h&gt;</p>
+</dd>
+</dl>
+<p>#include &lt;limits.h&gt;</p>
+<blockquote>
+<div><p>#if defined __stub_getopt_long || defined __stub___getopt_long
+fail fail fail this function is not going to work
+#endif</p>
+</div></blockquote>
+<dl>
+<dt>int main() {</dt><dd><blockquote>
+<div><p>void <em>a = (void</em>) &amp;getopt_long;
+long b = (long) a;
+return (int) b;</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Checking for function “getopt_long” : YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpv723t6m5
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpv723t6m5/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpv723t6m5/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -Wl,–fatal-warnings -DHAVE_CONFIG_H</p>
+<dl class="simple">
+<dt>Code:</dt><dd><p>int main() { return 0; }</p>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Compiler for C supports link arguments -DHAVE_CONFIG_H: YES
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpmfzf4234
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpmfzf4234/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpmfzf4234/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0 -Wl,–fatal-warnings -DSTDC_HEADERS</p>
+<dl class="simple">
+<dt>Code:</dt><dd><p>int main() { return 0; }</p>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Compiler for C supports link arguments -DSTDC_HEADERS: YES
+Dependency gnutls skipped: feature gnutls disabled
+Pkg-config binary for MachineChoice.HOST is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default pkg-config fallback at pkg-config
+Trying pkg-config binary pkg-config for machine MachineChoice.HOST at [‘/usr/bin/pkg-config’]
+Found pkg-config: /usr/bin/pkg-config (1.6.3)
+Determining dependency ‘openssl’ with pkg-config executable ‘/usr/bin/pkg-config’
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config –modversion openssl</cite> -&gt; 0
+1.1.1g
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config –cflags openssl</cite> -&gt; 0</p>
+<p>PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config openssl –libs</cite> -&gt; 0
+-L/usr/lib64 -lssl -lcrypto
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config openssl –libs</cite> -&gt; 0
+-lssl -lcrypto
+Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpe1yat0h2
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpe1yat0h2/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpe1yat0h2/output.exe -pipe -D_FILE_OFFSET_BITS=64 -O0</p>
+<dl>
+<dt>Code:</dt><dd><p>#include&lt;stdio.h&gt;</p>
+<blockquote>
+<div><dl class="simple">
+<dt>int main() {</dt><dd><p>printf(“%ldn”, (long)(sizeof(void <a href="#id1"><span class="problematic" id="id2">*</span></a>)));
+return 0;</p>
+</dd>
+</dl>
+<p>};</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>Compiler stdout:</p>
+<p>Compiler stderr:</p>
+<p>Program stdout:</p>
+<p>8</p>
+<p>Program stderr:</p>
+<p>Running compile:
+Working directory:  /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpy2edeim0
+Command line:  cc /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpy2edeim0/testfile.c -o /home/zaryob/Development/sicis/iksemel/build/meson-private/tmpy2edeim0/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 –print-search-dirs</p>
+<p>Code:</p>
+<dl class="simple">
+<dt>Compiler stdout:</dt><dd><p>install: /usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/</p>
+</dd>
+</dl>
+<p>programs: =/usr/libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/usr/libexec/gcc/x86_64-pc-linux-gnu/9.3.0/:/usr/libexec/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/bin/x86_64-pc-linux-gnu/9.3.0/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/bin/
+libraries: =/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/lib/x86_64-pc-linux-gnu/9.3.0/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../x86_64-pc-linux-gnu/9.3.0/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../lib64/:/lib/x86_64-pc-linux-gnu/9.3.0/:/lib/../lib64/:/usr/lib/x86_64-pc-linux-gnu/9.3.0/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../../x86_64-pc-linux-gnu/lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/9.3.0/../../../:/lib/:/usr/lib/</p>
+<p>Compiler stderr:</p>
+<p>Run-time dependency openssl found: YES 1.1.1g
+Configuring config.h using configuration
+src/meson.build:38: WARNING: Passed invalid keyword argument “required”.
+WARNING: This will become a hard error in the future.
+Adding test “Iksemel Test Suite - DOM Test”
+Adding test “Iksemel Test Suite - IKS Test”
+Adding test “Iksemel Test Suite - IkStack Test”
+Adding test “Iksemel Test Suite - MD5 Test”
+Adding test “Iksemel Test Suite - SAX Test”
+Adding test “Iksemel Test Suite - SHA Test”
+Adding test “Iksemel Test Suite - Filter Test”
+Adding test “Iksemel Test Suite - JiD Test”
+Program python3 found: YES (/usr/bin/python3)
+Pkg-config binary for MachineChoice.HOST is cached.
+Determining dependency ‘python-3.7m’ with pkg-config executable ‘/usr/bin/pkg-config’
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config –modversion python-3.7m</cite> -&gt; 0
+3.7
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config –cflags python-3.7m</cite> -&gt; 0
+-I/usr/include/python3.7m
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config python-3.7m –libs</cite> -&gt; 0
+-L/usr/lib64 -lpython3.7m
+PKG_CONFIG_PATH:
+Called <cite>/usr/bin/pkg-config python-3.7m –libs</cite> -&gt; 0
+-lpython3.7m
+Found “python-3.7m” via pkgconfig lookup in LIBPC (/usr/lib64/pkgconfig)
+Dependency python found: YES (pkgconfig)
+Adding test “Iksemel Test Suite - Python Tests [attibutes]”
+Adding test “Iksemel Test Suite - Python Tests [generate]”
+Adding test “Iksemel Test Suite - Python Tests [iteration]”
+Adding test “Iksemel Test Suite - Python Tests [root]”
+Adding test “Iksemel Test Suite - Python Tests [traverse]”
+Configuring iksemel-1.6.pc using configuration
+Build targets in project: 15
+Found ninja-1.9.0.git.kitware.dyndep-1.jobserver-1 at /usr/bin/ninja</p>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016-2020 Zaryob
+      <span class="lastupdated">
+        Last updated on Jun 13, 2020.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
