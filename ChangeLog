@@ -1,3 +1,6 @@
+2024-08-12 Zaryob
+  * uchar.h independent utf-8 decoding.
+
 2020-06-12 Zaryob
   * All building structure chaned with meson build tools.
 
