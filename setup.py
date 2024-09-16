@@ -17,7 +17,7 @@ import subprocess
 from distutils.core import setup, Extension
 from distutils.command.install import install
 
-version = '1.6.1'
+version = '1.6.2'
 
 distfiles = """
     README
