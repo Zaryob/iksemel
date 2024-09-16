@@ -803,9 +803,9 @@ iks_string (ikstack *s, iks *x)
 					*t++ = ' ';
 					t = my_strcat (t, IKS_ATTRIB_NAME (y), 0);
 					*t++ = '=';
-					*t++ = '\'';
+					*t++ = '"';
 					t = escape (t, IKS_ATTRIB_VALUE (y), strlen (IKS_ATTRIB_VALUE (y)));
-					*t++ = '\'';
+					*t++ = '"';
 					y = y->next;
 				}
 				if (IKS_TAG_CHILDREN (x)) {
