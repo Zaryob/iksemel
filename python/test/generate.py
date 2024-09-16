@@ -5,7 +5,7 @@ import iksemel as iks
 doc_xml = """
 <test>
     <a><b><c/></b></a>
-    <item foo='lala'>
+    <item foo="lala">
         <tuktuk>blah &amp; bleh</tuktuk>
         <nanuk/>
     </item>
@@ -58,7 +58,7 @@ b = iks.newDocument("b")
 b.setAttribute("lal", "foo")
 b = doc.insertNode(b)
 b.setAttribute("lal", "foofff")
-assert(doc.toString() == "<a><b lal='foofff'/></a>")
+assert(doc.toString() == "<a><b lal=\"foofff\"/></a>")
 
 # now with append, prepend and insertNode
 

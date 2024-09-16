@@ -140,8 +140,8 @@ string (char *xml)
 }
 
 static char buf[] =
-	"<presence id='JCOM_11' to='lala@j.org' type='available'><status>"
-	"&quot; &lt;online&amp;dangerous&gt; &quot;</status>meow<a><b c='d'/>"
+	"<presence id=\"JCOM_11\" to=\"lala@j.org\" type=\"available\"><status>"
+	"&quot; &lt;online&amp;dangerous&gt; &quot;</status>meow<a><b c=\"d\"/>"
 	"</a><test/></presence>";
 
 int main (int argc, char *argv[])

@@ -14,8 +14,8 @@
 int main (int argc, char *argv[])
 {
 	static char xml[] =
-		"<iq type='result' to='ydobon@jabber.org'><query xmlns='jabber:iq:version'>"
-		"<name>TestClient</name><os>SuxOS 2000</os><version><stable solidity='rock'/>"
+		"<iq type=\"result\" to=\"ydobon@jabber.org\"><query xmlns=\"jabber:iq:version\">"
+		"<name>TestClient</name><os>SuxOS 2000</os><version><stable solidity=\"rock\"/>"
 		"1.2.0 patchlevel 2</version></query></iq>";
 	static char xml2[] =
 		"<Ni><C/>lala<br/><A/>Hello World<B/></Ni>";

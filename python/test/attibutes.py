@@ -2,7 +2,7 @@
 
 import iksemel as iks
 
-doc_xml = "<lala b='' c='42'/>"
+doc_xml = "<lala b=\"\" c=\"42\"/>"
 
 doc = iks.newDocument("lala")
 doc.setAttribute("a", "lala")
