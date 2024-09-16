@@ -339,7 +339,10 @@ sax_core (iksparser *prs, char *buf, int len)
 					char **tmp;
 					if (prs->attcur == 0) tmp = NULL; else tmp = prs->atts;
 					err = prs->tagHook (prs->user_data, prs->tag_name, tmp, prs->tagtype);
-					if (IKS_OK != err) return err;
+					if (IKS_OK != err) {
+						iks_free(prs->atts);
+						return err;
+					}
 				}
 				prs->stack_pos = 0;
 				stack_old = -1;
@@ -374,7 +377,7 @@ sax_core (iksparser *prs, char *buf, int len)
 						if (!tmp) return IKS_NOMEM;
 						memset (tmp, 0, sizeof(char *) * 2 * prs->attmax);
 						memcpy (tmp, prs->atts, sizeof(char *) * prs->attcur);
-						free (prs->atts);
+						iks_free(prs->atts);
 						prs->atts = tmp;
 					}
 				}

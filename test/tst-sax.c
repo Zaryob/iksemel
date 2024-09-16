@@ -230,12 +230,15 @@ test_size (int blocksize)
 			case IKS_OK:
 				break;
 			case IKS_NOMEM:
+				iks_parser_delete(prs);
 				exit (1);
 			case IKS_BADXML:
 				PRINT_TEST;
 				printf ("Invalid xml at byte %ld in\n[%s]\n", iks_nr_bytes (prs), tester.doc);
+				iks_parser_delete(prs);
 				exit (1);
 			case IKS_HOOK:
+				iks_parser_delete(prs);
 				exit (1);
 		}
 		i += blocksize;
@@ -266,13 +269,19 @@ test_bad (int badbyte)
 		case IKS_OK:
 			break;
 		case IKS_NOMEM:
+			iks_parser_delete(p);
 			exit (1);
 		case IKS_BADXML:
-			if (iks_nr_bytes (p) == badbyte) return;
+			if (iks_nr_bytes (p) == badbyte) {
+				iks_parser_delete(p);
+				return;
+			}
 			break;
 		case IKS_HOOK:
+			iks_parser_delete(p);
 			exit (1);
 	}
+	iks_parser_delete(p);
 	printf ("Sax test %d:\n", tester.nr_tests);
 	printf ("Expected bad byte %d, got %ld in\n[%s]\n", badbyte, iks_nr_bytes (p), tester.doc);
 	exit (1);

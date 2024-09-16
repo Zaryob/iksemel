@@ -31,11 +31,13 @@ document (char *xml)
 			break;
 		case IKS_NOMEM:
 			PR_TEST;
+			iks_parser_delete(p);
 			puts ("Not enough memory.");
 			exit (1);
 		case IKS_BADXML:
 			PR_TEST;
 			printf ("Invalid xml at byte %ld in\n[%s]\n", iks_nr_bytes (p), xml);
+			iks_parser_delete(p);
 			exit (1);
 		case IKS_HOOK:
 			PR_TEST;

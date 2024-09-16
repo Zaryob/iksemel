@@ -67,7 +67,10 @@ iks_stack_new (size_t meta_chunk, size_t data_chunk)
 
 	len = sizeof (ikstack) + meta_chunk + data_chunk + (sizeof (ikschunk) * 2);
 	s = iks_malloc (len);
-	if (!s) return NULL;
+	if (!s) {
+		iks_free (s);
+		return NULL;
+	}
 	s->allocated = len;
 	s->meta = (ikschunk *) ((char *) s + sizeof (ikstack));
 	s->meta->next = NULL;

@@ -17,19 +17,24 @@ static int
 tagHook (struct dom_data *data, char *name, char **atts, int type)
 {
 	iks *x;
+	ikstack *s = NULL;  // Initialize s to NULL
 
 	if (IKS_OPEN == type || IKS_SINGLE == type) {
 		if (data->current) {
-			x = iks_insert (data->current, name);
+			x = iks_insert(data->current, name);
 		} else {
-			ikstack *s;
-			s = iks_stack_new (data->chunk_size, data->chunk_size);
-			x = iks_new_within (name, s);
+			s = iks_stack_new(data->chunk_size, data->chunk_size);  // Allocate stack
+			x = iks_new_within(name, s);
+			if (!x) {
+				iks_free(s);  // Free stack if memory allocation for x fails
+				return IKS_NOMEM;
+			}
 		}
+
 		if (atts) {
-			int i=0;
+			int i = 0;
 			while (atts[i]) {
-				iks_insert_attrib (x, atts[i], atts[i+1]);
+				iks_insert_attrib(x, atts[i], atts[i + 1]);
 				i += 2;
 			}
 		}
@@ -37,11 +42,15 @@ tagHook (struct dom_data *data, char *name, char **atts, int type)
 	}
 	if (IKS_CLOSE == type || IKS_SINGLE == type) {
 		x = iks_parent (data->current);
-		if (iks_strcmp(iks_name(data->current), name) != 0)
+
+		if (iks_strcmp(iks_name(data->current), name) != 0) {
+			if (s) iks_free(s);  // Free the stack if comparison fails
 			return IKS_BADXML;
+		}
 		if (x)
 			data->current = x;
 		else {
+			if (s) iks_free(s);  // Free the stack when finished
 			*(data->iksptr) = data->current;
 			data->current = NULL;
 		}
