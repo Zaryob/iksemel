@@ -6,11 +6,11 @@
 
             http://code.google.com/p/iksemel
 
-Owner:
-Copyright (c) 2000-2011 Gurer Ozen <meduketto at gmail.com>
+      Owner:
+      Copyright (c) 2000-2011 Gurer Ozen <meduketto at gmail.com>
 
-Changes and adaptations:
-Copyright (c) 2016-2022 Suleyman Poyraz <zaryob.dev at gmail.com>
+      Changes and maintenance:
+      Copyright (c) 2016-2024 Suleyman Poyraz <zaryob.dev at gmail.com>
 
 Introduction:
 -------------
@@ -36,23 +36,25 @@ Compiling & Install:
 --------------------
 
 If you got the source from CVS, type
-
+```bash
   meson build
-
+```
 for creating configuration script and files.
 
 Then type
-
+```bash
   ninja -C build
-
+```
 now library is compiled. You can test it with
-
+```bash
   ninja test -C build
-
+```
 and install it with
 
   (become root if necessary)
+```bash
   ninja install -C build
+```
 
 Parameters
 ----------
