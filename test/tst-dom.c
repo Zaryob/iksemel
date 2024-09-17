@@ -46,6 +46,10 @@ document (char *xml)
 	iks_parser_delete (p);
 }
 
+void finalize() {
+	if (my_x) iks_delete(my_x);
+}
+
 void
 tag (char *name, ...)
 {
@@ -162,5 +166,6 @@ int main (int argc, char *argv[])
 	tag ("test", 0);
 	string (buf);
 
+	finalize();
 	return 0;
 }
