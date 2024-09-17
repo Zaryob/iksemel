@@ -14,8 +14,9 @@ import os
 import glob
 import shutil
 import subprocess
-from distutils.core import setup, Extension
-from distutils.command.install import install
+from setuptools import setup, Extension
+from setuptools.command.install import install
+import unittest
 
 version = '1.6.2'
 
@@ -40,17 +41,20 @@ distfiles = """
 """
 
 if 'test' in sys.argv:
-    import unittest
     test_loader = unittest.TestLoader()
     test_suite = test_loader.discover('python/test/', pattern='*.py')
-    if test_suite:
-        print("all tests passed :)")
+    test_result = unittest.TextTestRunner().run(test_suite)
+    if test_result.wasSuccessful():
+        print("All tests passed :)")
         sys.exit(0)
-    sys.exit(1)
+    else:
+        print("Some tests failed :(")
+        sys.exit(1)
 
 
 class Install(install):
     def finalize_options(self):
+        # Uncomment and modify if specific install locations are needed
         # if os.path.exists("/etc/sulin-release"):
         #    self.install_platlib = '$base/lib/sulin'
         #    self.install_purelib = '$base/lib/sulin'
@@ -83,3 +87,4 @@ setup(
         'install': Install
     }
 )
+
