@@ -23,6 +23,7 @@ int main (int argc, char *argv[])
 						"<katana>&#x30bb;</katana>"
 						"<wideunicode>&#x26007;</wideunicode>"
 						"<nonprint>&#x01;&#x07;&#x0b;&#x7f;</nonprint>"
+						"<store>&#x645;&#x62e;&#x632;&#x646;</store>"
 						"</test>";
 
 	iks *x = iks_new ("test");
@@ -35,7 +36,8 @@ int main (int argc, char *argv[])
 	iks_insert_cdata (iks_insert (x, "katana"), "セ", 4);
 	iks_insert_cdata (iks_insert (x, "wideunicode"), "\U00026007", 4);
 	iks_insert_cdata (iks_insert (x, "nonprint"), "\x1\a\v\x7F", 4);
-	
+	iks_insert_cdata (iks_insert (x, "store"), "\u0645\u062e\u0632\u0646", 8);
+
 	char *t = iks_string (iks_stack (x), x);
 	if(!t || strcmp(t, xml) != 0) {
 		printf("Result:   %s\n", t);

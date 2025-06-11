@@ -571,50 +571,64 @@ is_print(char c)
 }
 
 static size_t
+encode_unicode(char* buf, size_t max_len, size_t *consumed, const char *src, size_t src_len)
+{
+	unsigned char c = src[0];
+	*consumed = 1;
+
+	if (c != 0 && c < 127) {
+		return snprintf(buf, max_len, "&#x%02x;",  c);
+	}
+
+	// Convert UTF-8 bytes to Unicode code point
+	unsigned int unicode_code_point = 0;
+	unsigned char *ptr = (unsigned char *)(src);
+
+	// Invalid characters
+	if(c == 0x00 || (c >= 0x80 && c <= 0x9F)){
+		return 0;
+	}
+
+	// 2 bytes
+	if ((c & 0xE0) == 0xC0 && src_len >= 2) {
+		*consumed = 2;
+		unicode_code_point = ((ptr[0] & 0x1F) << 6) | (ptr[1] & 0x3F);
+		return snprintf(buf, max_len, "&#x%02x;", unicode_code_point);
+	}
+
+	// 3 bytes
+	if ((c & 0xF0) == 0xE0 && src_len >= 3) {
+		*consumed = 3;
+		unicode_code_point = ((ptr[0] & 0x0F) << 12) | ((ptr[1] & 0x3F) << 6) | (ptr[2] & 0x3F);
+		return snprintf(buf, max_len, "&#x%02x;", unicode_code_point);
+	}
+
+	// 4 bytes
+	if ((c & 0xF8) == 0xF0 && src_len >= 4) {
+		*consumed = 4;
+		unicode_code_point = ((ptr[0] & 0x07) << 18) | ((ptr[1] & 0x3F) << 12) | ((ptr[2] & 0x3F) << 6) | (ptr[3] & 0x3F);
+		return snprintf(buf, max_len, "&#x%02x;", unicode_code_point);
+	}
+
+	return snprintf(buf, max_len, "&#x%02x;", c);
+}
+
+static size_t
 escape_size (char *src, size_t len)
 {
 	size_t sz;
 	char c;
-	int i;
+	size_t i;
 
 	sz = 0;
 	for (i = 0; i < len; i++) {
 		c = src[i];
 
-
-		if( c < 0 || c > 127 ){
-			
-			// Convert UTF-8 bytes to Unicode code point
-			unsigned char *ptr = (unsigned char *)(src+i);
-			
-			if( *ptr >= 0x80 &&  *ptr <= 0x9F ){
-				continue;
-			}
-			else if ((*ptr & 0xE8) == 0xC0) {
-				sz += 2 * 1 + 4;
-				i++;
-				continue;
-			}
-			else if ((*ptr &  0xF0) == 0xE0) {
-				sz += 2 * 3 + 4;
-				i+=2;
-				continue;
-			}
-			else if ((*ptr & 0xF8) == 0xF0) {
-				sz += 2 * 4 + 4;
-				i+=3;
-				continue;
-			}
-			else {
-			    sz += 6;
-			    continue;
-			}
-			
-		}
-
 		if (!is_print(c)) {
-			sz += 6;
-			continue;
+			size_t consumed;
+
+			sz += encode_unicode(NULL, 0, &consumed, src+i, len-i);
+			i += consumed - 1;
 		}
 
 		switch (c) {
@@ -644,67 +658,22 @@ escape (char *dest, char *src, size_t len)
 
 	size_t i;
 	size_t j = 0;
-	
+
 
 	for (i = 0; i < len; i++) {
 		c = src[i];
 
 		// handle non-ascii characters
 		if (!is_print(c)) {
-		
 			if (i - j > 0) dest = my_strcat(dest, src + j, i - j);
 			j = i + 1;
-			
+
 			char buf[13] = {0};
+			size_t consumed;
 
-			if( c < 0 || c > 127){
-				// Convert UTF-8 bytes to Unicode code point
-
-				unsigned int unicode_code_point = 0;
-				unsigned char *ptr = (unsigned char *)(src+i);
-				
-				// Invalid characters
-				if( *ptr >= 0x80 &&  *ptr <= 0x9F ){
-					continue;
-				}
-				// 2 bytes
-				else if ((*ptr & 0xE8) == 0xC0) {
-					unicode_code_point = ((*ptr & 0x1F) << 6) | (*(ptr + 1) & 0x3F);
-					dest = my_strcat(dest, buf, snprintf(buf, sizeof buf, "&#x%02x;", unicode_code_point));
-					i++;
-					j = i + 1;
-					continue;
-				}
-				// 3 bytes
-				else if ((*ptr & 0xF0) == 0xE0) {
-					unicode_code_point = ((*ptr & 0x0F) << 12) | ((*(ptr + 1) & 0x3F) << 6) | (*(ptr + 2) & 0x3F);
-					dest = my_strcat(dest, buf, snprintf(buf, sizeof buf, "&#x%02x;", unicode_code_point));
-					i+=2;
-					j = i + 1;
-					continue;
-				}
-				// 4 bytes
-				else if ((*ptr & 0xF8) == 0xF0) {
-					unicode_code_point = ((*ptr & 0x07) << 18) | ((*(ptr + 1) & 0x3F) << 12) | ((*(ptr + 2) & 0x3F) << 6) | (*(ptr + 3) & 0x3F);
-					dest = my_strcat(dest, buf, snprintf(buf, sizeof buf, "&#x%02x;", unicode_code_point));
-					i+=3;
-					j = i + 1;
-					continue;
-				}
-				else {
-					dest = my_strcat(dest, buf, snprintf(buf, sizeof buf, "&#x%02x;", c));
-					continue;
-				}
-			
-			
-			}
-			else{
-				if(c != 0x00){
-					dest = my_strcat(dest, buf, snprintf(buf, sizeof buf, "&#x%02x;", c));
-					continue;
-				}
-			}
-		
+			dest = my_strcat(dest, buf, encode_unicode(buf, sizeof buf, &consumed, src+i, len-i));
+			j += consumed - 1;
+			i += consumed - 1;
 		}
 
 		if ('&' == c || '<' == c || '>' == c || '\'' == c || '"' == c) {
