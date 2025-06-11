@@ -196,6 +196,41 @@ stack_expand (iksparser *prs, int len)
 	prs->stack_pos++; \
 }
 
+static int utf8_encode(char dst[4], long int v) {
+	if (v <= 0x7F) {
+		dst[0] = (char) v;
+		return 1;
+	} else if (v <= 0x07FF) {
+		dst[0] = (char) (((v >> 6) & 0x1F) | 0xC0);
+		dst[1] = (char) (((v >> 0) & 0x3F) | 0x80);
+		return 2;
+	} else if (v <= 0xFFFF) {
+		dst[0] = (char) (((v >> 12) & 0x0F) | 0xE0);
+		dst[1] = (char) (((v >> 6) & 0x3F) | 0x80);
+		dst[2] = (char) (((v >> 0) & 0x3F) | 0x80);
+		return 3;
+	} else if (v <= 0x10FFFF) {
+		dst[0] = (char) (((v >> 18) & 0x07) | 0xF0);
+		dst[1] = (char) (((v >> 12) & 0x3F) | 0x80);
+		dst[2] = (char) (((v >> 6) & 0x3F) | 0x80);
+		dst[3] = (char) (((v >> 0) & 0x3F) | 0x80);
+		return 4;
+	} else {
+		dst[0] = '?';
+		return 1;
+	}
+}
+
+static int decode_codepoint(char dst[4], const char *src, int base) {
+	long int v = strtol(src, NULL, base);
+	if (v == 0) {
+		dst[0] = '?';
+		return 1;
+	}
+
+	return utf8_encode(dst, v);
+}
+
 static enum ikserror
 sax_core (iksparser *prs, char *buf, int len)
 {
@@ -469,23 +504,27 @@ sax_core (iksparser *prs, char *buf, int len)
 
 			case C_ENTITY:
 				if (';' == c) {
-					char hede[2];
-					char t = '?';
+					char hede[4] = {'?', '\0', '\0', '\0'};
+					int hede_len = 1;
 					prs->entity[prs->entpos] = '\0';
 					if (strcmp(prs->entity, "amp") == 0)
-						t = '&';
+						hede[0] = '&';
 					else if (strcmp(prs->entity, "quot") == 0)
-						t = '"';
+						hede[0] = '"';
 					else if (strcmp(prs->entity, "apos") == 0)
-						t = '\'';
+						hede[0] = '\'';
 					else if (strcmp(prs->entity, "lt") == 0)
-						t = '<';
+						hede[0] = '<';
 					else if (strcmp(prs->entity, "gt") == 0)
-						t = '>';
+						hede[0] = '>';
+					else if (strncmp(prs->entity, "#x", 2) == 0)
+						hede_len = decode_codepoint(hede, prs->entity+2, 16);
+					else if (strncmp(prs->entity, "#", 1) == 0)
+						hede_len = decode_codepoint(hede, prs->entity+1, 10);
+
 					old = pos + 1;
-					hede[0] = t;
 					if (prs->cdataHook) {
-						err = prs->cdataHook (prs->user_data, &hede[0], 1);
+						err = prs->cdataHook (prs->user_data, hede, hede_len);
 						if (IKS_OK != err) return err;
 					}
 					prs->context = C_CDATA;
