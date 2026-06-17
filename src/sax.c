@@ -127,8 +127,100 @@ iks_nr_lines (iksparser *prs)
 	return prs->nr_lines;
 }
 
-#define IS_WHITESPACE(x) ' ' == (x) || '\t' == (x) || '\r' == (x) || '\n' == (x)
-#define NOT_WHITESPACE(x) ' ' != (x) && '\t' != (x) && '\r' != (x) && '\n' != (x)
+#define B_INVALID 1
+#define B_NEWLINE 2
+#define B_UTF8    4
+#define B_WS      8
+#define B_CDATA   16
+#define B_TAG     32
+#define B_APOS    64
+#define B_QUOT    128
+#define B_RBRACKET 256
+
+static const unsigned char utf8_len[256] = {
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+	4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 0, 0
+};
+
+/*
+ * RFC 3629
+ * 110xxxxx (0xC0) -> 2 bytes, mask 0x1F
+ * 1110xxxx (0xE0) -> 3 bytes, mask 0x0F
+ * 11110xxx (0xF0) -> 4 bytes, mask 0x07
+ * 111110xx (0xF8) -> 5 bytes (legacy), mask 0x03
+ * 1111110x (0xFC) -> 6 bytes (legacy), mask 0x01
+ */
+static const unsigned char utf8_mask[256] = {
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F,
+	0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F,
+	0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F, 0x0F,
+	0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x03, 0x03, 0x03, 0x03, 0x01, 0x01, 0, 0
+};
+
+/*
+ * char_class bitmask mapping:
+ * 0x00: B_INVALID
+ * 0x09 (\t): B_WS
+ * 0x0A (\n): B_NEWLINE
+ * 0x0D (\r): B_WS
+ * 0x20 (space): B_WS
+ * 0x22 ("): B_QUOT (value delimiter)
+ * 0x26 (&): B_CDATA (event trigger)
+ * 0x27 ('): B_APOS (value delimiter)
+ * 0x3C (<): B_CDATA (event trigger)
+ * 0x3D (=): B_TAG (delimiter)
+ * 0x3E (>): B_TAG (delimiter)
+ * 0x2F (/): B_TAG (delimiter)
+ * 0x5D (]): B_RBRACKET (CDATA section terminator)
+ * 0xFE, 0xFF: B_INVALID
+ */
+static const unsigned short char_class[256] = {
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 8, 2, 0, 0, 8, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	8, 0, 128, 0, 0, 0, 16, 64, 0, 0, 0, 0, 0, 0, 0, 32,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 32, 32, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+	4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1
+};
+
+#define IS_WHITESPACE(x) (char_class[(unsigned char)(x)] & (B_WS | B_NEWLINE))
+#define NOT_WHITESPACE(x) (!(char_class[(unsigned char)(x)] & (B_WS | B_NEWLINE)))
 
 static int
 stack_init (iksparser *prs)
@@ -206,7 +298,7 @@ sax_core (iksparser *prs, char *buf, int len)
 	while (pos < len) {
 		re = 0;
 		c = buf[pos];
-		if (0 == c || 0xFE == c || 0xFF == c) return IKS_BADXML;
+
 		if (prs->uni_max) {
 			if ((c & 0xC0) != 0x80) return IKS_BADXML;
 			prs->uni_char <<= 6;
@@ -229,27 +321,11 @@ sax_core (iksparser *prs, char *buf, int len)
 			}
 			goto cont;
 		} else {
-			if (c & 0x80) {
-				unsigned char mask;
-				if ((c & 0x60) == 0x40) {
-					prs->uni_max = 2;
-					mask = 0x1F;
-				} else if ((c & 0x70) == 0x60) {
-					prs->uni_max = 3;
-					mask = 0x0F;
-				} else if ((c & 0x78) == 0x70) {
-					prs->uni_max = 4;
-					mask = 0x07;
-				} else if ((c & 0x7C) == 0x78) {
-					prs->uni_max = 5;
-					mask = 0x03;
-				} else if ((c & 0x7E) == 0x7C) {
-					prs->uni_max = 6;
-					mask = 0x01;
-				} else {
-					return IKS_BADXML;
-				}
-				prs->uni_char = c & mask;
+			unsigned short cl = char_class[c];
+			if (cl & B_UTF8) {
+				prs->uni_max = utf8_len[c];
+				if (0 == prs->uni_max) return IKS_BADXML;
+				prs->uni_char = c & utf8_mask[c];
 				prs->uni_len = 1;
 				if (stack_old == -1
 					&& (prs->context == C_TAG
@@ -257,11 +333,21 @@ sax_core (iksparser *prs, char *buf, int len)
 						|| prs->context == C_VALUE_APOS
 						|| prs->context == C_VALUE_QUOT)) stack_old = pos;
 				goto cont;
+			} else if (cl & B_INVALID) {
+				return IKS_BADXML;
 			}
 		}
 
 		switch (prs->context) {
 			case C_CDATA:
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_CDATA))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_CDATA))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
+					break;
+				}
 				if ('&' == c) {
 					if (old < pos && prs->cdataHook) {
 						err = prs->cdataHook (prs->user_data, &buf[old], pos - old);
@@ -331,6 +417,13 @@ sax_core (iksparser *prs, char *buf, int len)
 					break;
 				}
 				if (stack_old == -1) stack_old = pos;
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
+				}
 				break;
 
 			case C_TAG_END:
@@ -404,6 +497,13 @@ sax_core (iksparser *prs, char *buf, int len)
 					break;
 				}
 				if (stack_old == -1) stack_old = pos;
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
+				}
 				break;
 
 			case C_ATTRIBUTE_2:
@@ -446,6 +546,13 @@ sax_core (iksparser *prs, char *buf, int len)
 					prs->attcur += 2;
 				}
 				if (stack_old == -1) stack_old = pos;
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_APOS))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_APOS))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
+				}
 				break;
 
 			case C_VALUE_QUOT:
@@ -458,6 +565,13 @@ sax_core (iksparser *prs, char *buf, int len)
 					prs->attcur += 2;
 				}
 				if (stack_old == -1) stack_old = pos;
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_QUOT))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_QUOT))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
+				}
 				break;
 
 			case C_WHITESPACE:
@@ -575,6 +689,14 @@ sax_core (iksparser *prs, char *buf, int len)
 						err = prs->cdataHook (prs->user_data, &buf[old], pos - old);
 						if (IKS_OK != err) return err;
 					}
+					break;
+				}
+				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_RBRACKET))) {
+					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_RBRACKET))) {
+						pos++;
+						prs->nr_bytes++;
+					}
+					re = 1;
 				}
 				break;
 
