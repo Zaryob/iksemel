@@ -322,7 +322,7 @@ sax_core (iksparser *prs, char *buf, int len)
 			goto cont;
 		} else {
 			unsigned short cl = char_class[c];
-			if (cl & B_UTF8) {
+			if (IKS_UNLIKELY (cl & B_UTF8)) {
 				prs->uni_max = utf8_len[c];
 				if (0 == prs->uni_max) return IKS_BADXML;
 				prs->uni_char = c & utf8_mask[c];
