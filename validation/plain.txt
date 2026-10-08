@@ -1,0 +1,355 @@
+COMMAND: <workspace>/work/venv/bin/meson setup <workspace>/work/build/iksemel-plain -Dopenssl=disabled -Dgnutls=disabled
+The Meson build system
+Version: 1.12.1
+Source dir: <workspace>/work/repos/Zaryob--iksemel
+Build dir: <workspace>/work/build/iksemel-plain
+Build type: native build
+Project name: iksemel
+Project version: undefined
+C compiler for the host machine: cc (clang 21.0.0 "Apple clang version 21.0.0 (clang-2100.3.34.2)")
+C linker for the host machine: cc ld64 27037.1
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Compiler for C supports arguments -Werror=implicit-function-declaration: YES
+Has header "dlfcn.h" : YES
+Has header "errno.h" : YES
+Has header "inttypes.h" : YES
+Has header "memory.h" : YES
+Has header "stdint.h" : YES
+Has header "stdlib.h" : YES
+Has header "strings.h" : YES
+Has header "string.h" : YES
+Has header "sys/stat.h" : YES
+Has header "sys/types.h" : YES
+Has header "unistd.h" : YES
+Checking for function "getaddrinfo" : YES
+Checking for function "getopt_long" : YES
+Compiler for C supports link arguments -DHAVE_CONFIG_H: YES
+Compiler for C supports link arguments -DSTDC_HEADERS: YES
+Dependency gnutls for host machine skipped: feature gnutls disabled
+include/meson.build:113: WARNING: No TLS backends enabled. Please enable at least one TLS backend [GnuTLS or OpenSSL] to use Jabber.
+Configuring config.h using configuration
+Configuring iksemel-1.6.pc using configuration
+Build targets in project: 8
+
+iksemel undefined
+
+  User defined options
+    gnutls : disabled
+    openssl: disabled
+
+Found ninja-1.13.2 at /opt/homebrew/bin/ninja
+COMMAND: <workspace>/work/venv/bin/meson compile -C <workspace>/work/build/iksemel-plain
+ninja: Entering directory `<workspace>/work/build/iksemel-plain'
+[1/25] Compiling C object test/test-iks-utf8.p/tst-iks-utf8.c.o
+../../repos/Zaryob--iksemel/test/tst-iks-utf8.c:13:15: warning: unused parameter 'argc' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-iks-utf8.c:13:27: warning: unused parameter 'argv' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |                           ^
+2 warnings generated.
+[2/25] Compiling C object src/libiksemel.dylib.p/utility.c.o
+../../repos/Zaryob--iksemel/src/utility.c:106:10: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+  106 |         if (len == -1) len = strlen (src);
+      |             ~~~ ^  ~~
+../../repos/Zaryob--iksemel/src/utility.c:146:10: warning: comparison of integers of different signs: 'size_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+  146 |         if (len == -1) len = strlen (src);
+      |             ~~~ ^  ~~
+2 warnings generated.
+[3/25] Compiling C object src/libiksemel.dylib.p/sha.c.o
+[4/25] Compiling C object src/libiksemel.dylib.p/io-posix.c.o
+../../repos/Zaryob--iksemel/src/io-posix.c:23:13: warning: cast to smaller integer type 'int' from 'void *' [-Wvoid-pointer-to-int-cast]
+   23 |         int sock = (int) socket;
+      |                    ^~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/io-posix.c:63:14: warning: cast to 'void *' from smaller integer type 'int' [-Wint-to-void-pointer-cast]
+   63 |                         io_close ((void *) sock);
+      |                                   ^~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/io-posix.c:91:15: warning: cast to 'void *' from smaller integer type 'int' [-Wint-to-void-pointer-cast]
+   91 |         *socketptr = (void *) sock;
+      |                      ^~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/io-posix.c:32:24: warning: unused parameter 'prs' [-Wunused-parameter]
+   32 | io_connect (iksparser *prs, void **socketptr, const char *server, int port)
+      |                        ^
+../../repos/Zaryob--iksemel/src/io-posix.c:99:13: warning: cast to smaller integer type 'int' from 'void *' [-Wvoid-pointer-to-int-cast]
+   99 |         int sock = (int) socket;
+      |                    ^~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/io-posix.c:122:13: warning: cast to smaller integer type 'int' from 'void *' [-Wvoid-pointer-to-int-cast]
+  122 |         int sock = (int) socket;
+      |                    ^~~~~~~~~~~~
+6 warnings generated.
+[5/25] Compiling C object src/libiksemel.dylib.p/base64.c.o
+[6/25] Compiling C object src/libiksemel.dylib.p/ikstack.c.o
+../../repos/Zaryob--iksemel/src/ikstack.c:23:19: warning: zero size arrays are an extension [-Wzero-length-array]
+   23 |         align_type align[0] ;   // Align data, and ensure struct size matches alignment
+      |                          ^
+../../repos/Zaryob--iksemel/src/ikstack.c:31:19: warning: zero size arrays are an extension [-Wzero-length-array]
+   31 |         align_type align[0] ;   // Ensure struct size matches alignment
+      |                          ^
+../../repos/Zaryob--iksemel/src/ikstack.c:63:19: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   63 |         if (meta_chunk < MIN_CHUNK_SIZE) meta_chunk = MIN_CHUNK_SIZE;
+      |                          ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:14:26: note: expanded from macro 'MIN_CHUNK_SIZE'
+   14 | #define MIN_CHUNK_SIZE ( DEFAULT_ALIGNMENT * 8 )
+      |                          ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:63:48: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   63 |         if (meta_chunk < MIN_CHUNK_SIZE) meta_chunk = MIN_CHUNK_SIZE;
+      |                                                       ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:14:26: note: expanded from macro 'MIN_CHUNK_SIZE'
+   14 | #define MIN_CHUNK_SIZE ( DEFAULT_ALIGNMENT * 8 )
+      |                          ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:64:19: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   64 |         if (meta_chunk & ALIGN_MASK) meta_chunk = ALIGN (meta_chunk);
+      |                          ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:64:44: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   64 |         if (meta_chunk & ALIGN_MASK) meta_chunk = ALIGN (meta_chunk);
+      |                                                   ^~~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:27: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                           ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:64:44: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   64 |         if (meta_chunk & ALIGN_MASK) meta_chunk = ALIGN (meta_chunk);
+      |                                                   ^~~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:53: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                                                     ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:65:19: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   65 |         if (data_chunk < MIN_CHUNK_SIZE) data_chunk = MIN_CHUNK_SIZE;
+      |                          ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:14:26: note: expanded from macro 'MIN_CHUNK_SIZE'
+   14 | #define MIN_CHUNK_SIZE ( DEFAULT_ALIGNMENT * 8 )
+      |                          ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:65:48: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   65 |         if (data_chunk < MIN_CHUNK_SIZE) data_chunk = MIN_CHUNK_SIZE;
+      |                                                       ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:14:26: note: expanded from macro 'MIN_CHUNK_SIZE'
+   14 | #define MIN_CHUNK_SIZE ( DEFAULT_ALIGNMENT * 8 )
+      |                          ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:66:19: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   66 |         if (data_chunk & ALIGN_MASK) data_chunk = ALIGN (data_chunk);
+      |                          ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:66:44: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   66 |         if (data_chunk & ALIGN_MASK) data_chunk = ALIGN (data_chunk);
+      |                                                   ^~~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:27: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                           ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:66:44: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   66 |         if (data_chunk & ALIGN_MASK) data_chunk = ALIGN (data_chunk);
+      |                                                   ^~~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:53: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                                                     ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:91:13: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   91 |         if (size < MIN_ALLOC_SIZE) size = MIN_ALLOC_SIZE;
+      |                    ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:15:24: note: expanded from macro 'MIN_ALLOC_SIZE'
+   15 | #define MIN_ALLOC_SIZE DEFAULT_ALIGNMENT
+      |                        ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:91:36: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   91 |         if (size < MIN_ALLOC_SIZE) size = MIN_ALLOC_SIZE;
+      |                                           ^~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:15:24: note: expanded from macro 'MIN_ALLOC_SIZE'
+   15 | #define MIN_ALLOC_SIZE DEFAULT_ALIGNMENT
+      |                        ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:92:13: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   92 |         if (size & ALIGN_MASK) size = ALIGN (size);
+      |                    ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:92:32: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   92 |         if (size & ALIGN_MASK) size = ALIGN (size);
+      |                                       ^~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:27: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                           ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:92:32: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   92 |         if (size & ALIGN_MASK) size = ALIGN (size);
+      |                                       ^~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:16:53: note: expanded from macro 'ALIGN'
+   16 | #define ALIGN(x) ( ((x) + DEFAULT_ALIGNMENT - 1) & ~ALIGN_MASK )
+      |                                                     ^~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:13:22: note: expanded from macro 'ALIGN_MASK'
+   13 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/src/ikstack.c:12:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   12 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+17 warnings generated.
+[7/25] Compiling C object src/libiksemel.dylib.p/md5.c.o
+[8/25] Compiling C object src/libiksemel.dylib.p/iks.c.o
+[9/25] Compiling C object src/libiksemel.dylib.p/dom.c.o
+[10/25] Compiling C object test/test-iks.p/tst-iks.c.o
+../../repos/Zaryob--iksemel/test/tst-iks.c:14:15: warning: unused parameter 'argc' [-Wunused-parameter]
+   14 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-iks.c:14:27: warning: unused parameter 'argv' [-Wunused-parameter]
+   14 | int main (int argc, char *argv[])
+      |                           ^
+2 warnings generated.
+[11/25] Compiling C object test/test-dom.p/tst-dom.c.o
+../../repos/Zaryob--iksemel/test/tst-dom.c:49:14: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+   49 | void finalize() {
+      |              ^
+      |               void
+../../repos/Zaryob--iksemel/test/tst-dom.c:153:15: warning: unused parameter 'argc' [-Wunused-parameter]
+  153 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-dom.c:153:27: warning: unused parameter 'argv' [-Wunused-parameter]
+  153 | int main (int argc, char *argv[])
+      |                           ^
+3 warnings generated.
+[12/25] Compiling C object test/test-md5.p/tst-md5.c.o
+../../repos/Zaryob--iksemel/test/tst-md5.c:13:15: warning: unused parameter 'argc' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-md5.c:13:27: warning: unused parameter 'argv' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |                           ^
+2 warnings generated.
+[13/25] Compiling C object src/libiksemel.dylib.p/sax.c.o
+../../repos/Zaryob--iksemel/src/sax.c:638:62: warning: unused parameter 'finish' [-Wunused-parameter]
+  638 | iks_parse (iksparser *prs, const char *data, size_t len, int finish)
+      |                                                              ^
+1 warning generated.
+[14/25] Compiling C object test/test-ikstack.p/tst-ikstack.c.o
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:33:10: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+   32 |                         printf ("ikstack bug, addr %p should be a multiply of %d\n",
+      |                                                                               ~~
+      |                                                                               %zu
+   33 |                                 mem, DEFAULT_ALIGNMENT);
+      |                                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:14:28: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   14 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:28:16: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+   28 |         for (i = 0; i < strlen (buf); i++) {
+      |                     ~ ^ ~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:31:31: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   31 |                 if (((unsigned long) mem) & ALIGN_MASK) {
+      |                                             ^~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:15:22: note: expanded from macro 'ALIGN_MASK'
+   15 | #define ALIGN_MASK ( DEFAULT_ALIGNMENT - 1 )
+      |                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:14:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   14 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:33:10: warning: performing pointer subtraction with a null pointer has undefined behavior [-Wnull-pointer-subtraction]
+   33 |                                 mem, DEFAULT_ALIGNMENT);
+      |                                      ^~~~~~~~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:14:78: note: expanded from macro 'DEFAULT_ALIGNMENT'
+   14 | #define DEFAULT_ALIGNMENT  ((size_t) ((char *) &((struct align_test *) 0)->b - (char *) 0))
+      |                                                                              ^ ~~~~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:46:15: warning: unused parameter 'argc' [-Wunused-parameter]
+   46 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-ikstack.c:46:27: warning: unused parameter 'argv' [-Wunused-parameter]
+   46 | int main (int argc, char *argv[])
+      |                           ^
+6 warnings generated.
+[15/25] Compiling C object test/test-sha.p/tst-sha.c.o
+../../repos/Zaryob--iksemel/test/tst-sha.c:13:15: warning: unused parameter 'argc' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |               ^
+../../repos/Zaryob--iksemel/test/tst-sha.c:13:27: warning: unused parameter 'argv' [-Wunused-parameter]
+   13 | int main (int argc, char *argv[])
+      |                           ^
+2 warnings generated.
+[16/25] Compiling C object test/test-sax.p/tst-sax.c.o
+../../repos/Zaryob--iksemel/test/tst-sax.c:149:16: warning: unused parameter 'udata' [-Wunused-parameter]
+  149 | tagHook (void *udata, char *name, char **atts, int type)
+      |                ^
+../../repos/Zaryob--iksemel/test/tst-sax.c:195:18: warning: unused parameter 'udata' [-Wunused-parameter]
+  195 | cdataHook (void *udata, char *data, size_t len)
+      |                  ^
+../../repos/Zaryob--iksemel/test/tst-sax.c:275:25: warning: comparison of integers of different signs: 'unsigned long' and 'int' [-Wsign-compare]
+  275 |                         if (iks_nr_bytes (p) == badbyte) {
+      |                             ~~~~~~~~~~~~~~~~ ^  ~~~~~~~
+../../repos/Zaryob--iksemel/test/tst-sax.c:294:11: warning: unused parameter 'argc' [-Wunused-parameter]
+  294 | main (int argc, char *argv[])
+      |           ^
+../../repos/Zaryob--iksemel/test/tst-sax.c:294:23: warning: unused parameter 'argv' [-Wunused-parameter]
+  294 | main (int argc, char *argv[])
+      |                       ^
+5 warnings generated.
+[17/25] Linking target src/libiksemel.dylib
+[18/25] Generating symbol file src/libiksemel.dylib.p/libiksemel.dylib.symbols
+[19/25] Linking target test/test-sha
+[20/25] Linking target test/test-iks
+[21/25] Linking target test/test-md5
+[22/25] Linking target test/test-dom
+[23/25] Linking target test/test-iks-utf8
+[24/25] Linking target test/test-sax
+[25/25] Linking target test/test-ikstack
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C <workspace>/work/build/iksemel-plain
+COMMAND: <workspace>/work/venv/bin/meson test -C <workspace>/work/build/iksemel-plain --print-errorlogs
+ninja: Entering directory `<workspace>/work/build/iksemel-plain'
+ninja: no work to do.
+1/7 iksemel:Iksemel Test Suite - DOM Test       OK              0.43s
+2/7 iksemel:Iksemel Test Suite - IkStack Test   OK              0.31s
+3/7 iksemel:Iksemel Test Suite - IKS UTF-8 Test OK              0.34s
+4/7 iksemel:Iksemel Test Suite - IKS Test       OK              0.44s
+5/7 iksemel:Iksemel Test Suite - MD5 Test       OK              0.34s
+6/7 iksemel:Iksemel Test Suite - SAX Test       OK              0.26s
+7/7 iksemel:Iksemel Test Suite - SHA Test       OK              0.24s
+
+Ok:                7
+Fail:              0
+
+Full log written to <workspace>/work/build/iksemel-plain/meson-logs/testlog.txt
