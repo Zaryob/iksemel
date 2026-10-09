@@ -1,8 +1,10 @@
 [![Issues](https://img.shields.io/github/issues-raw/Zaryob/iksemel?style=for-the-badge)](https://github.com/Zaryob/iksemel/issues) [![PullRequests](https://img.shields.io/github/issues-pr-raw/Zaryob/iksemel?style=for-the-badge)](https://github.com/Zaryob/iksemel/pulls)
 
-[![Travis Status](https://travis-ci.org/Zaryob/iksemel.svg?branch=master)](https://travis-ci.org/Zaryob/iksemel) ![Language](https://img.shields.io/badge/language-c-blue.svg) ![License](https://img.shields.io/badge/license-LGPL2-purple.svg) [![Document](https://img.shields.io/badge/document-gh--pages-blue)](https://zaryob.github.io/iksemels)
+![Language](https://img.shields.io/badge/language-c-blue.svg) ![License](https://img.shields.io/badge/license-LGPL2-purple.svg)
 
-                      iksemel 1.6.2
+Downstream of [Gürer Özen's iksemel](https://github.com/meduketto/iksemel). See [fork history](FORK_CHANGES.md), [local verification](VALIDATION.md) and [security scope](SECURITY.md). The optional TLS backends are disabled by default and are not security-validated.
+
+                      iksemel (C downstream)
 
             http://code.google.com/p/iksemel
 
@@ -25,35 +27,35 @@ License. A copy of the license is included in the COPYING file.
 Requirements:
 -------------
 
-Meson and Ninja packages are required for compiling cvs versions.
+Meson >= 0.50.0, Ninja and a C compiler are required to build from Git.
 
-TLS support requires OpenSSL (>1.1.0) or GNUTLS (>2.0.0) library.
+Optional TLS builds use OpenSSL (no minimum is enforced by the build) or GnuTLS >= 3.6.5. Compilation does not establish secure peer verification; read [SECURITY.md](SECURITY.md).
 
-Python bindings requires Python (>3.3).
+Python bindings are optional and have not been revalidated in this audit. See the Python build files for their dependencies.
 
 
 Compiling & Install:
 --------------------
 
-If you got the source from CVS, type
+From a Git checkout, configure the default parser-only build:
 ```bash
-  meson build
+  meson setup build -Dopenssl=disabled -Dgnutls=disabled
 ```
-for creating configuration script and files.
+The Meson version option currently defaults to 1.6; release tags and historical README version strings are separate evidence. No new release is implied here.
 
 Then type
 ```bash
-  ninja -C build
+  meson compile -C build
 ```
 now library is compiled. You can test it with
 ```bash
-  ninja test -C build
+  meson test -C build --print-errorlogs
 ```
 and install it with
 
   (become root if necessary)
 ```bash
-  ninja install -C build
+  meson install -C build
 ```
 
 Parameters
@@ -63,3 +65,6 @@ Parameters
 * **gnutls**: [enabled,disabled] GNUTLS support. (Conflicts with OpenSSL)
 * **with_tools**: [true,false] Enable Tools (hash, ikslint, iksperf, iksroster)
 * **with_python**: [true,false] Enable Python support.
+* **tests**: [true,false] Build the regression suite (default: true).
+
+Both TLS features default to disabled. Enable at most one backend explicitly, for example `meson setup build-openssl -Dopenssl=enabled -Dgnutls=disabled`. Tools and Python bindings default to false.

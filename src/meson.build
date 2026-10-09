@@ -31,7 +31,6 @@ if get_option('gnutls').enabled()
                           [gnutls_sources],
                           include_directories : include_dir,
                           link_with: libiksemel,
-                          link_args: '-lgnutls',
                           dependencies : gnutls_dep,
                           install : true)
 endif
