@@ -29,6 +29,6 @@ meson test -C build-gnutls --print-errorlogs
 
 The macOS run supplied `PKG_CONFIG_PATH=/opt/homebrew/opt/openssl@3/lib/pkgconfig:/opt/homebrew/opt/gnutls/lib/pkgconfig`. It did not change global compiler/linker paths. The backend dependency already supplies the GnuTLS library path; a second bare `-lgnutls` bypassed it and failed on this installation.
 
-Raw command output is retained in [validation/](validation/). Paths are replaced with `<workspace>` and trailing whitespace is removed. Test counts depend on enabled features: the TLS configurations include JID/filter tests, **not certificate or live handshake tests**.
+Per-test terminal output is not tracked in this repository. The commands above produce fresh local logs. Test counts depend on enabled features: the TLS configurations include JID/filter tests, **not certificate or live handshake tests**.
 
 Not verified: certificate-chain/hostname/expiry rejection, downgrade resistance, a modern XMPP server, Python packaging, Windows/Linux builds, fuzz coverage, or release binaries. TLS acceptance gates remain in [#16](https://github.com/Zaryob/iksemel/issues/16). See [SECURITY.md](SECURITY.md) before using untrusted inputs or network transport.
