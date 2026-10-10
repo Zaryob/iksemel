@@ -288,6 +288,27 @@ stack_expand (iksparser *prs, int len)
 	prs->stack_pos++; \
 }
 
+/*
+ * Skip over a run of bytes that need no per-byte processing: a byte is
+ * plain when its char_class carries none of B_INVALID, B_NEWLINE, B_UTF8 or
+ * the given stop bits.
+ */
+static inline int
+sax_skip_run (iksparser *prs, const char *buf, int *pos, int len, unsigned short stop)
+{
+	unsigned short mask = B_INVALID | B_NEWLINE | B_UTF8 | stop;
+	int p = *pos;
+
+	if (char_class[(unsigned char) buf[p]] & mask)
+		return 0;
+	do {
+		p++;
+		prs->nr_bytes++;
+	} while (p < len && !(char_class[(unsigned char) buf[p]] & mask));
+	*pos = p;
+	return 1;
+}
+
 static enum ikserror
 sax_core (iksparser *prs, char *buf, int len)
 {
@@ -340,11 +361,7 @@ sax_core (iksparser *prs, char *buf, int len)
 
 		switch (prs->context) {
 			case C_CDATA:
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_CDATA))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_CDATA))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_CDATA)) {
 					re = 1;
 					break;
 				}
@@ -417,13 +434,8 @@ sax_core (iksparser *prs, char *buf, int len)
 					break;
 				}
 				if (stack_old == -1) stack_old = pos;
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_WS | B_TAG))
 					re = 1;
-				}
 				break;
 
 			case C_TAG_END:
@@ -497,13 +509,8 @@ sax_core (iksparser *prs, char *buf, int len)
 					break;
 				}
 				if (stack_old == -1) stack_old = pos;
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_WS | B_TAG))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_WS | B_TAG))
 					re = 1;
-				}
 				break;
 
 			case C_ATTRIBUTE_2:
@@ -546,13 +553,8 @@ sax_core (iksparser *prs, char *buf, int len)
 					prs->attcur += 2;
 				}
 				if (stack_old == -1) stack_old = pos;
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_APOS))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_APOS))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_APOS))
 					re = 1;
-				}
 				break;
 
 			case C_VALUE_QUOT:
@@ -565,13 +567,8 @@ sax_core (iksparser *prs, char *buf, int len)
 					prs->attcur += 2;
 				}
 				if (stack_old == -1) stack_old = pos;
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_QUOT))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_QUOT))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_QUOT))
 					re = 1;
-				}
 				break;
 
 			case C_WHITESPACE:
@@ -691,13 +688,8 @@ sax_core (iksparser *prs, char *buf, int len)
 					}
 					break;
 				}
-				if (!(char_class[c] & (B_INVALID | B_NEWLINE | B_UTF8 | B_RBRACKET))) {
-					while (pos < len && !(char_class[(unsigned char)buf[pos]] & (B_INVALID | B_NEWLINE | B_UTF8 | B_RBRACKET))) {
-						pos++;
-						prs->nr_bytes++;
-					}
+				if (sax_skip_run (prs, buf, &pos, len, B_RBRACKET))
 					re = 1;
-				}
 				break;
 
 			case C_SECT_CDATA_E:
