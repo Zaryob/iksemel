@@ -36,6 +36,15 @@
 extern int errno;
 #endif
 
+/* Branch prediction hints for supported compilers */
+#ifdef __GNUC__
+#define IKS_LIKELY(x)   __builtin_expect (!!(x), 1)
+#define IKS_UNLIKELY(x) __builtin_expect (!!(x), 0)
+#else
+#define IKS_LIKELY(x)   (x)
+#define IKS_UNLIKELY(x) (x)
+#endif
+
 #include "finetune.h"
 
 #endif // __COMMON_H
